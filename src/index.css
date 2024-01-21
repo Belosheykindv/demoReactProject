@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.app-wrapper-content {
+  grid-area: c;
+  background-image: url(http://phonoteka.org/uploads/posts/2022-01/1643286333_79-phonoteka-org-p-nezhno-biryuzovii-fon-83.jpg);
+
+}
+.app-wrapper-content img {
+  width: 800px;
+}

@@ -1,0 +1,17 @@
+.item {
+   padding: 5px;
+    
+}
+.item img {
+   width: 60px;
+   height: 70px;
+   border-radius: 5px;
+     
+ }
+ .img {
+  width: 128px;
+  height: 384px;
+ }
+ .selectedPage {
+   font-weight: bold;
+ }
