@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/demoReactProject/static/css/main.6e349e05.css",
-    "main.js": "/demoReactProject/static/js/main.edfda44b.js",
+    "main.css": "/demoReactProject/static/css/main.ec57341c.css",
+    "main.js": "/demoReactProject/static/js/main.6cd63e55.js",
     "static/js/787.b0e29ad6.chunk.js": "/demoReactProject/static/js/787.b0e29ad6.chunk.js",
     "static/media/Header.png": "/demoReactProject/static/media/Header.0da5bb89b5f7c0d7e807.png",
     "static/media/userPhoto.png": "/demoReactProject/static/media/userPhoto.b215b8a9624319c689e1.png",
     "static/media/loading.gif": "/demoReactProject/static/media/loading.37c08fa6e9fd3c7cfedf.gif",
     "index.html": "/demoReactProject/index.html",
-    "main.6e349e05.css.map": "/demoReactProject/static/css/main.6e349e05.css.map",
-    "main.edfda44b.js.map": "/demoReactProject/static/js/main.edfda44b.js.map",
+    "main.ec57341c.css.map": "/demoReactProject/static/css/main.ec57341c.css.map",
+    "main.6cd63e55.js.map": "/demoReactProject/static/js/main.6cd63e55.js.map",
     "787.b0e29ad6.chunk.js.map": "/demoReactProject/static/js/787.b0e29ad6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e349e05.css",
-    "static/js/main.edfda44b.js"
+    "static/css/main.ec57341c.css",
+    "static/js/main.6cd63e55.js"
   ]
 }
