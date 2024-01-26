@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/demoReactProject/static/css/main.57f40663.css",
-    "main.js": "/demoReactProject/static/js/main.461ca76e.js",
+    "main.css": "/demoReactProject/static/css/main.6b54e438.css",
+    "main.js": "/demoReactProject/static/js/main.f57ec642.js",
     "static/js/787.b0e29ad6.chunk.js": "/demoReactProject/static/js/787.b0e29ad6.chunk.js",
-    "static/media/anonymBeer.png": "/demoReactProject/static/media/anonymBeer.d61486e4cbb5d0ad6c39.png",
     "static/media/Header.png": "/demoReactProject/static/media/Header.0da5bb89b5f7c0d7e807.png",
+    "static/media/anonymBeer.png": "/demoReactProject/static/media/anonymBeer.6bb1fd43752d4183c8c9.png",
     "static/media/userPhoto.png": "/demoReactProject/static/media/userPhoto.b215b8a9624319c689e1.png",
     "static/media/loading.gif": "/demoReactProject/static/media/loading.37c08fa6e9fd3c7cfedf.gif",
     "index.html": "/demoReactProject/index.html",
-    "main.57f40663.css.map": "/demoReactProject/static/css/main.57f40663.css.map",
-    "main.461ca76e.js.map": "/demoReactProject/static/js/main.461ca76e.js.map",
+    "main.6b54e438.css.map": "/demoReactProject/static/css/main.6b54e438.css.map",
+    "main.f57ec642.js.map": "/demoReactProject/static/js/main.f57ec642.js.map",
     "787.b0e29ad6.chunk.js.map": "/demoReactProject/static/js/787.b0e29ad6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.57f40663.css",
-    "static/js/main.461ca76e.js"
+    "static/css/main.6b54e438.css",
+    "static/js/main.f57ec642.js"
   ]
 }
