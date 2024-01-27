@@ -1,0 +1,19 @@
+.descriptionBlock {
+  padding: 10px;
+  column-width: 400px;
+ 
+}
+  .profile img {
+    width: 240px;
+    height: 300px;
+  }
+.profile{
+  column-count: 2;
+  column-fill:auto;
+}
+.profileAva{
+  column-width: 100px;
+}
+.contact {
+  padding-left: 10px;
+}

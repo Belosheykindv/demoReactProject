@@ -1,0 +1,41 @@
+.component img {
+    height: 600px;
+}
+
+.component {
+    display: flex;
+
+}
+
+.component li {
+    padding-left: 20px;
+}
+
+.buttonWrapper {
+    padding-bottom: 25px;
+}
+
+.button {
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    font-weight: 40;
+    font-size: 1.0rem;
+    color: white;
+    line-height: 1.5;
+    height: 60px;
+    transition: all 200ms linear;
+    border-radius: 4px;
+    width: 250px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 12px 35px 0 rgba(19, 70, 235, 0.25);
+    outline: 0;
+    text-transform: capitalize;
+    background-color: rgb(35, 152, 241);
+}
