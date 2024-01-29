@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 import { logout } from './Redux/authReducer'
 // import ProfileContainer from './Components/Profile/profileContainer';
 import { Route, Routes } from 'react-router-dom';
-import MusicContainer from './Components/Music/Music';
 import BeerComp from './Components/Settings/Settings';
 // import DialogsContainer from './Components/Dialogs/Dialogs-container';
 // import UsersContainer from './Components/Users/usersContainer';
@@ -33,6 +32,7 @@ const ProfileContainer = React.lazy(() => import('./Components/Profile/profileCo
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/Dialogs-container'));
 const UsersContainer = React.lazy(() => import('./Components/Users/usersContainer'));
 const ChatPage = React.lazy(() => import('./Pages/Chat/chatPage'))
+const MusicContainer = React.lazy(() => import('./Components/Music/Music'))
 
 const App = (props) => {
   const [collapsed, setCollapsed] = useState(false);
