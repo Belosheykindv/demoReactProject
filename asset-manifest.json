@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/demoReactProject/static/css/main.f036535a.css",
-    "main.js": "/demoReactProject/static/js/main.7935eee6.js",
+    "main.css": "/demoReactProject/static/css/main.dfb1163d.css",
+    "main.js": "/demoReactProject/static/js/main.33f914a9.js",
     "static/js/845.8788ecd3.chunk.js": "/demoReactProject/static/js/845.8788ecd3.chunk.js",
     "static/js/787.b0e29ad6.chunk.js": "/demoReactProject/static/js/787.b0e29ad6.chunk.js",
     "static/media/Pachalbel - Canon in D.mp3": "/demoReactProject/static/media/Pachalbel - Canon in D.c91ce542902cb19a9f1c.mp3",
@@ -12,9 +12,15 @@
     "static/media/Perry Como - Magic Moments.mp3": "/demoReactProject/static/media/Perry Como - Magic Moments.3a541b9403e7cea5bb43.mp3",
     "static/media/LXST CXNTURY-OSAKA.mp3": "/demoReactProject/static/media/LXST CXNTURY-OSAKA.99ee9bafb214669c51f9.mp3",
     "static/media/Maf1k-Sigma Phonk.mp3": "/demoReactProject/static/media/Maf1k-Sigma Phonk.d5385f40c28a8aaf0bab.mp3",
+    "static/media/uni3.jpeg": "/demoReactProject/static/media/uni3.4977d63173424a471ec4.jpeg",
     "static/media/Augustin Garnier - Fallen Down.mp3": "/demoReactProject/static/media/Augustin Garnier - Fallen Down.6389163bc4f74a47c3e2.mp3",
+    "static/media/snow.jpg": "/demoReactProject/static/media/snow.39e6af54c3a98528b7c4.jpg",
+    "static/media/uni2.jpg": "/demoReactProject/static/media/uni2.388f7ee010b1b8c30ee5.jpg",
+    "static/media/uni1.jpeg": "/demoReactProject/static/media/uni1.14c9a25ef8f95c6fa6ba.jpeg",
     "static/media/Header.png": "/demoReactProject/static/media/Header.0da5bb89b5f7c0d7e807.png",
     "static/media/anonymBeer.png": "/demoReactProject/static/media/anonymBeer.6bb1fd43752d4183c8c9.png",
+    "static/media/andromeda.png": "/demoReactProject/static/media/andromeda.7f6f610e339ee69591fd.png",
+    "static/media/blurredStars.png": "/demoReactProject/static/media/blurredStars.f71342beccb79f356214.png",
     "static/media/userPhoto.png": "/demoReactProject/static/media/userPhoto.b215b8a9624319c689e1.png",
     "static/media/loading.gif": "/demoReactProject/static/media/loading.37c08fa6e9fd3c7cfedf.gif",
     "static/media/pause.svg": "/demoReactProject/static/media/pause.6d72bb709ff2f64924bbacda4a237460.svg",
@@ -22,13 +28,13 @@
     "static/media/next.svg": "/demoReactProject/static/media/next.7c9d7c79bc1bddbc64b7cda0cad6f96b.svg",
     "index.html": "/demoReactProject/index.html",
     "static/media/play.svg": "/demoReactProject/static/media/play.ae28f2f8ed43f26bbecc733fd80f370c.svg",
-    "main.f036535a.css.map": "/demoReactProject/static/css/main.f036535a.css.map",
-    "main.7935eee6.js.map": "/demoReactProject/static/js/main.7935eee6.js.map",
+    "main.dfb1163d.css.map": "/demoReactProject/static/css/main.dfb1163d.css.map",
+    "main.33f914a9.js.map": "/demoReactProject/static/js/main.33f914a9.js.map",
     "845.8788ecd3.chunk.js.map": "/demoReactProject/static/js/845.8788ecd3.chunk.js.map",
     "787.b0e29ad6.chunk.js.map": "/demoReactProject/static/js/787.b0e29ad6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f036535a.css",
-    "static/js/main.7935eee6.js"
+    "static/css/main.dfb1163d.css",
+    "static/js/main.33f914a9.js"
   ]
 }
