@@ -1,36 +1,46 @@
-import { stopSubmit } from "redux-form";
+
+
 import { authAPI } from "../Api/apiRequest";
 const SET_USER_DATA = 'SET_USER_DATA';
+const ERROR = 'ERROR';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
-type setUserDataType = typeof SET_USER_DATA;
-type toggleisFethingType = typeof TOGGLE_IS_FETCHING
-// type setUserDataActionType = {
-//     type: typeof SET_USER_DATA,
-//     data: {
-//         email: string,
-//         id: number,
-//         login: string,
-//         isAuth: boolean
-//     }
-// }
-type actionType = setUserDataType | toggleisFethingType;
-type initialStateAutType = {
+type initialStateType = {
     email: string | null,
     id: number | null,
     login: string | null,
     isAuth: boolean,
+    isFetching: boolean,
+    error: string | null
+}
+type setUserDataActionDataType = {
+    email: string | null,
+    id: number | null,
+    login: string | null,
+    isAuth: boolean,
+    error: string | null
+}
+type setUserDataType = {
+    type: typeof SET_USER_DATA,
+    data: setUserDataActionDataType
+}
+type toggleIsFetchingType = {
+    type: typeof TOGGLE_IS_FETCHING,
     isFetching: boolean
-};
-
-let initialState: initialStateAutType = {
+}
+type errorType = {
+    type: typeof ERROR,
+    data: string
+}
+let initialState: initialStateType = {
     email: null,
     id: null,
     login: null,
     isAuth: false,
-    isFetching: false
+    isFetching: false,
+    error: null
 }
-const authReducer = (state = initialState, action: any) => {
+const authReducer = (state = initialState, action: any): initialStateType => {
 
     switch (action.type) {
         case SET_USER_DATA: {
@@ -39,15 +49,18 @@ const authReducer = (state = initialState, action: any) => {
         case TOGGLE_IS_FETCHING: {
             return { ...state, isFetching: action.isFetching }
         }
+        case ERROR: {
+            return { ...state, error: action.data }
+        }
         default: return state;
     }
 }
-export const setUserData = (email: string | null, id: number | null, login: string | null, isAuth: boolean) => ({ type: SET_USER_DATA, data: { email, id, login, isAuth } })
+export const setUserData = (email: string | null, id: number | null, login: string | null, isAuth: boolean, error: string | null): setUserDataType => ({ type: SET_USER_DATA, data: { email, id, login, isAuth, error } })
 export const getUserData = () => async (dispatch: any) => {
     const data = await authAPI.auth();
     if (data.resultCode === 0) {
         let { email, id, login } = data.data;
-        dispatch(setUserData(email, id, login, true));
+        dispatch(setUserData(email, id, login, true, null));
     }
     ;
 }
@@ -56,19 +69,20 @@ export const login = (email: string, password: string, rememberMe: boolean) => a
     if (data.resultCode === 0) {
         dispatch(getUserData())
     } else {
-        let message = data.messages[0];
-        dispatch(dispatch(stopSubmit('login', { _error: message })));
+        let message: string = data.messages[0];
+        dispatch(error(message))
     }
 };
 
 export const logout = () => async (dispatch: any) => {
     const data = await authAPI.logout()
     if (data.resultCode === 0) {
-        dispatch(setUserData(null, null, null, false))
+        dispatch(setUserData(null, null, null, false, null))
     };
 };
 
-export const toggleIsFetching = (isFetching: boolean) => ({ type: TOGGLE_IS_FETCHING, isFetching })
+export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({ type: TOGGLE_IS_FETCHING, isFetching })
+export const error = (error: string): errorType => ({ type: ERROR, data: error })
 
 export default authReducer;
 

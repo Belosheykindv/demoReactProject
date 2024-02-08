@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import profileReducer from "./profilePage-reducer";
 import dialogsReducer from "./dialogPage-reducer";
 import usersReducer from "./users-reducer";
-import authReducer from "./authReducer";
+import authReducer from "./authReducer.ts";
 import chatReducer from "./chatReducer";
 import settingPageReducer from './settingPageReducer'
 import thunkMiddleware from 'redux-thunk'
