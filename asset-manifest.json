@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/demoReactProject/static/css/main.324e2b3d.css",
-    "main.js": "/demoReactProject/static/js/main.c07e63e3.js",
+    "main.css": "/demoReactProject/static/css/main.e3bbfaa9.css",
+    "main.js": "/demoReactProject/static/js/main.a529c8ef.js",
     "static/js/845.8788ecd3.chunk.js": "/demoReactProject/static/js/845.8788ecd3.chunk.js",
     "static/js/787.b0e29ad6.chunk.js": "/demoReactProject/static/js/787.b0e29ad6.chunk.js",
     "static/media/Pachalbel - Canon in D.mp3": "/demoReactProject/static/media/Pachalbel - Canon in D.c91ce542902cb19a9f1c.mp3",
@@ -28,13 +28,13 @@
     "static/media/next.svg": "/demoReactProject/static/media/next.7c9d7c79bc1bddbc64b7cda0cad6f96b.svg",
     "index.html": "/demoReactProject/index.html",
     "static/media/play.svg": "/demoReactProject/static/media/play.ae28f2f8ed43f26bbecc733fd80f370c.svg",
-    "main.324e2b3d.css.map": "/demoReactProject/static/css/main.324e2b3d.css.map",
-    "main.c07e63e3.js.map": "/demoReactProject/static/js/main.c07e63e3.js.map",
+    "main.e3bbfaa9.css.map": "/demoReactProject/static/css/main.e3bbfaa9.css.map",
+    "main.a529c8ef.js.map": "/demoReactProject/static/js/main.a529c8ef.js.map",
     "845.8788ecd3.chunk.js.map": "/demoReactProject/static/js/845.8788ecd3.chunk.js.map",
     "787.b0e29ad6.chunk.js.map": "/demoReactProject/static/js/787.b0e29ad6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.324e2b3d.css",
-    "static/js/main.c07e63e3.js"
+    "static/css/main.e3bbfaa9.css",
+    "static/js/main.a529c8ef.js"
   ]
 }
