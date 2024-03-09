@@ -7,16 +7,19 @@ const Post = React.memo((props) => {
     let postId = props.postId
     props.addLike(postId)
   }
-  return <div key={props.postId} className={P.item}>
-    <div className={P.post}>
-      <img className={P.img} src={props.img}></img>
-      <span className={P.message}>&nbsp; {props.message}</span>
+  const onDeletePost = () => {
+    let postId = props.postId
+    props.deletePost(postId)
+  }
+  return <div key={props.postId} className={P.postContainer}>
+    <div className={P.imgContainer}> <img src={props.img}></img></div>
+    <div className={P.msgContainer}>{props.message}</div>
+    <div className={P.btnContainer}>
+      <div className={P.likeBtn}>{props.likesCount}<Button ghost={true} size={'small'} onClick={onAddLike} type={'default'}>❤️</Button> </div>
+      <div className={P.shareBtn}>{props.share}<Button ghost={true} size={'small'} type={'default'}>✉</Button></div>
     </div>
-    <div>
-      <Button onClick={onAddLike} type={'primary'}><span>Лайк</span></Button> {props.likesCount}
-      <Button type={'primary'}>Репост</Button><span>{props.share}</span>
-    </div>
-  </div>
+    <div className={P.delBtn}><Button onClick={onDeletePost} type={'default'} ghost={true}>❌</Button></div>
+  </div >
 
 
 })

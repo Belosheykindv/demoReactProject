@@ -73,16 +73,21 @@ const ProfileFuncStatus = (props) => {
     return <div>
         {!editMode &&
             <div>
-                <span onClick={activateEditMode}><b>Статус -</b> {props.status || 'пусто'}</span>
-            </div>}
-        {editMode &&
-            <div>
+                <span
+                    onClick={activateEditMode}
+                ><b>Статус - </b>{props.status || 'пусто'}</span>
+            </div>
+        }
+        {
+            editMode &&
+            <div >
                 <input
                     onChange={onStatusChange}
                     autoFocus={true}
                     defaultValue={props.status}></input>
                 <button onClick={deActivateEditMode}>Сохранить</button>
-            </div>}
-    </div>
+            </div>
+        }
+    </div >
 }
 export default ProfileFuncStatus;

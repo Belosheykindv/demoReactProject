@@ -1,0 +1,107 @@
+.todoMain h1 {
+    font-weight: 300;
+    color: #1677ff;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
+.todoMain ul {
+    width: 100%;
+    padding-inline-start: 0px;
+    list-style-type: none
+}
+
+.todoInputBlock {
+    display: flex;
+
+}
+
+.todoInput {
+    flex: 9;
+
+}
+
+.todoBtnBlock {
+    flex: 1;
+
+}
+
+.todoBtn {
+    color: var(--theme-color)
+}
+
+.todoInputButton {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 1em;
+    color: #1677ff;
+    appearance: none;
+    /* color: currentcolor; */
+    background: transparent;
+    border: 1px solid #828691;
+    width: 80px;
+    padding: 0.8em;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+}
+
+.todoList {
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0.65em;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.171);
+    background-color: rgba(200, 209, 245, 0)
+}
+
+/* .todoList button {
+    color: var(--theme-color);
+    border-radius: 10px;
+    flex: 1;
+    margin-left: 10px;
+    font-size: 1em;
+    appearance: none;
+    background: transparent;
+    border: 1px solid #828691;
+    width: 80px;
+    padding: 0.8em;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+} */
+
+.todoList li {
+    font-family: 'Verdana', sans-serif;
+    align-items: center;
+    font-size: 1em;
+    font-weight: 400;
+    appearance: none;
+    flex: 8;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    /* background: #494847; */
+    letter-spacing: 0.04rem;
+    transition: all 0.3s ease-out;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    width: min-content;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    white-space: pre-wrap;
+    display: flex;
+ 
+}
+
+.inputCB {
+    opacity: 50%;
+    width: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding: 0.85em;
+    scale: 2.4;
+    text-align: center;
+
+}
