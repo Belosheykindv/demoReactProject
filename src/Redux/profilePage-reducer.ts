@@ -1,7 +1,7 @@
 
 import { profileAPI } from "../Api/apiRequest";
 import { stopSubmit } from "redux-form";
-import { FORM_ERROR } from "final-form";
+// import { FORM_ERROR } from "final-form";
 import Anonym from '../Images/userPhoto.png'
 import { v1 } from 'uuid'
 import { Dispatch } from "react";
@@ -10,7 +10,7 @@ const DELETE_POST = 'DELETE_POST';
 const ADD_LIKE = 'ADD-LIKE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_PROFILE_STATUS = 'SET_USER_PROFILE_STATUS';
-const UPDATE_ABOUT_ME = 'UPDATE_ABOUT_ME';
+// const UPDATE_ABOUT_ME = 'UPDATE_ABOUT_ME';
 const SET_USER_ABOUT_ME = 'SET_USER_ABOUT_ME'
 const UPDATE_PROFILE_PHOTO = 'UPDATE_PROFILE_PHOTO'
 type postElType = {
@@ -52,7 +52,7 @@ type photosType = {
     small: string | null
     large: string | null
 }
-type profileType = {
+export type profileType = {
     userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: boolean
@@ -121,7 +121,7 @@ const profileReducer = (state = initialState, action: actionType): initialStateT
 
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id != action.postId),
+                posts: state.posts.filter(p => p.id !== action.postId),
 
             };
         }
@@ -276,7 +276,7 @@ export const updateAboutMe = (profile: profileType) => async (dispatch: any, get
     }
 
 }
-export const updateUserPhoto = (photos: photosType) => async (dispatch: any) => {
+export const updateUserPhoto = (photos: File) => async (dispatch: any) => {
     const response = await profileAPI.updateUserPhoto(photos)
     if (response.resultCode === 0) { dispatch(updateProfilePhoto(response.data.photos)) } else {
         const messages = response.messages
