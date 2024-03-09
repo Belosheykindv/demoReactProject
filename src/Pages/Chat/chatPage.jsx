@@ -59,7 +59,6 @@ const Message = React.memo(({ message }) => {
         <br />
         <span style={{ fontSize: '1.0rem' }} >{message.message}</span>
         {/* <br /> */}
-
         <hr />
     </div>
 })

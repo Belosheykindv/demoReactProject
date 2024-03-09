@@ -1,3 +1,4 @@
+import { Dispatch } from "react";
 import { authAPI } from "../Api/apiRequest";
 const SET_USER_DATA = 'SET_USER_DATA';
 const ERROR = 'ERROR';
@@ -20,7 +21,7 @@ type setUserDataActionDataType = {
     isAuth: boolean,
     error: string | null
 }
-type setUserDataType = {
+export type setUserDataType = {
     type: typeof SET_USER_DATA,
     data: setUserDataActionDataType
 }
@@ -35,6 +36,11 @@ type errorType = {
 type captchaUtlType = {
     type: typeof CAPTCHA_URL
     data: string
+}
+type getUserDataType = {
+    email: string
+    id: number
+    login: string
 }
 let initialState: initialStateType = {
     email: null,
@@ -64,7 +70,7 @@ const authReducer = (state = initialState, action: any): initialStateType => {
     }
 }
 export const setUserData = (email: string | null, id: number | null, login: string | null, isAuth: boolean, error: string | null): setUserDataType => ({ type: SET_USER_DATA, data: { email, id, login, isAuth, error } })
-export const getUserData = () => async (dispatch: any) => {
+export const getUserData = ()=> async (dispatch: Dispatch<setUserDataType>) => {
     const data = await authAPI.auth();
     if (data.resultCode === 0) {
         let { email, id, login } = data.data;

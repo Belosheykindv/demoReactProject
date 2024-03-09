@@ -37,39 +37,39 @@ script.src = "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediata
 script.async = true;
 document.body.appendChild(script);
 
-const Test = () => {
-    const jsmediatags = window.jsmediatags;
-    const onLoad = (e) => {
+// const Test = () => {
+//     const jsmediatags = window.jsmediatags;
+//     const onLoad = (e) => {
 
-        jsmediatags.read(e.target.files[0], {
-            onSuccess: function (tag) {
-                const data = tag.tags.picture.data;
-                const format = tag.tags.picture.format;
-                let base64String = '';
-                for (let i = 0; i < data.length; i++)
-                    base64String += String.fromCharCode(data[i])
-                document.querySelector('#songImg').style.backgroundImage = `url(data:${format};base64,${window.btoa(base64String)})`
-                document.querySelector('#title').textContent = tag.tags.title
-                document.querySelector('#artist').textContent = tag.tags.artist
-                // console.log(tag)
-                // console.log(importedSongs)
-            },
-            onError: function (error) {
-                // handle error
-                console.log(error);
-            }
-        });
+//         jsmediatags.read(e.target.files[0], {
+//             onSuccess: function (tag) {
+//                 const data = tag.tags.picture.data;
+//                 const format = tag.tags.picture.format;
+//                 let base64String = '';
+//                 for (let i = 0; i < data.length; i++)
+//                     base64String += String.fromCharCode(data[i])
+//                 document.querySelector('#songImg').style.backgroundImage = `url(data:${format};base64,${window.btoa(base64String)})`
+//                 document.querySelector('#title').textContent = tag.tags.title
+//                 document.querySelector('#artist').textContent = tag.tags.artist
+//                 // console.log(tag)
+//                 // console.log(importedSongs)
+//             },
+//             onError: function (error) {
+//                 // handle error
+//                 console.log(error);
+//             }
+//         });
 
-    }
+//     }
 
-    return <div>
-        <input type="file" name="" id="inputMP3" accept=".mp3" onChange={onLoad} />
-        <div id='songImg'> </div>
-        <p id='title'></p>
-        <p id="artist"></p>
+//     return <div>
+//         <input type="file" name="" id="inputMP3" accept=".mp3" onChange={onLoad} />
+//         <div id='songImg'> </div>
+//         <p id='title'></p>
+//         <p id="artist"></p>
 
-    </div>
-}
+//     </div>
+// }
 let tracks = [
     {
         title: "OSAKA",
@@ -136,21 +136,21 @@ let tracks = [
     }
 
 ]
-function unlockAudioContext(audioCtx) {
-    if (audioCtx.state !== 'suspended') return;
-    const b = document.body;
-    const events = ['touchstart', 'touchend', 'mousedown', 'keydown'];
-    events.forEach(e => b.addEventListener(e, unlock, false));
-    function unlock() { audioCtx.resume().then(clean); }
-    function clean() { events.forEach(e => b.removeEventListener(e, unlock)); }
-}
-const Backdrop = ({ activeColor, trackIndex, isPlaying }) => {
-    useEffect(() => {
-        document.documentElement.style.setProperty("--active-color", activeColor);
-    }, [trackIndex, activeColor]);
+// function unlockAudioContext(audioCtx) {
+//     if (audioCtx.state !== 'suspended') return;
+//     const b = document.body;
+//     const events = ['touchstart', 'touchend', 'mousedown', 'keydown'];
+//     events.forEach(e => b.addEventListener(e, unlock, false));
+//     function unlock() { audioCtx.resume().then(clean); }
+//     function clean() { events.forEach(e => b.removeEventListener(e, unlock)); }
+// }
+// const Backdrop = ({ activeColor, trackIndex, isPlaying }) => {
+//     useEffect(() => {
+//         document.documentElement.style.setProperty("--active-color", activeColor);
+//     }, [trackIndex, activeColor]);
 
-    return <div className={`color-backdrop ${isPlaying ? "playing" : "idle"}`} />;
-};
+//     return <div className={`color-backdrop ${isPlaying ? "playing" : "idle"}`} />;
+// };
 
 const Music = React.memo((props) => {
 
@@ -211,16 +211,18 @@ const Music = React.memo((props) => {
 
     useEffect(() => {
         // setSoundEnabled(true)
-        console.log('Секунда воспроизведения')
+        // console.log('Секунда воспроизведения')
         const interval = setInterval(() => {
-            setisLoading(false)
-            setSeconds(sound.seek([]) || ''); // устанавливаем состояние с текущим значением в секундах
-            const min = Math.floor(sound.seek([]) / 60);
-            const sec = Math.floor(sound.seek([]) % 60);
-            setCurrTime({
-                min,
-                sec,
-            });
+            if (!sound) { setisLoading(true) } else {
+                setisLoading(false)
+                setSeconds(sound.seek([]) ?? '--'); // устанавливаем состояние с текущим значением в секундах
+                const min = Math.floor(sound.seek([]) / 60);
+                const sec = Math.floor(sound.seek([]) % 60);
+                setCurrTime({
+                    min,
+                    sec,
+                });
+            }
 
         }, 1000);
         return (
@@ -230,12 +232,12 @@ const Music = React.memo((props) => {
                 console.log('UNMOUNTED')
             }
         )
-    }, [sound]);
+    }, [sound, stop]);
 
-    const mainActionRender = ({ playingButton, _ }) => ({
-        id: 'mainActionContainer',
-        node: <button onClick={playingButton}>Play</button>
-    });
+    // const mainActionRender = ({ playingButton, _ }) => ({
+    //     id: 'mainActionContainer',
+    //     node: <button onClick={playingButton}>Play</button>
+    // });
     if (props.auth === false) return <Navigate to={'/login'} />
     return (<div>
         <div
