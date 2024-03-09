@@ -44,13 +44,16 @@ export const authAPI = {
         const response = await instance.get(`auth/me`)
         return response.data
     },
-    login: async (email, password, rememberMe) => {
-        const response = await instance.post(`auth/login`, { email, password, rememberMe })
+    login: async (email, password, rememberMe, captcha) => {
+        const response = await instance.post(`auth/login`, { email, password, rememberMe, captcha })
         return response.data
     },
     logout: async () => {
         const response = await instance.delete(`auth/login`)
         return response.data
+    },
+    getCaptchaUrl: () => {
+        return instance.get('/security/get-captcha-url')
     }
 }
 // API для страницы профиля*******************************************
@@ -109,7 +112,7 @@ const closeHandler = () => {
 
 const errorHandler = () => {
     notifySubscribersAaboutStatus('error')
-    console.error('Refresh page')
+    console.error('Refresh page (Какая-то ошибка)')
 }
 
 const notifySubscribersAaboutStatus = (status) => {
@@ -120,12 +123,12 @@ const cleanUp = (ws) => {
     ws?.removeEventListener('message', setMessageHandler)
     ws?.removeEventListener('open', openHandler)
     ws?.removeEventListener('error', errorHandler)
-    // ws?.close()
+    ws?.close()
 }
 
 function createChannel() {
     cleanUp()
-    ws?.close()
+    // ws?.close()
     ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
     notifySubscribersAaboutStatus('pending')
     ws.addEventListener('close', closeHandler)

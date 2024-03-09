@@ -1,19 +1,75 @@
 .descriptionBlock {
   padding: 10px;
   column-width: 400px;
- 
+
 }
-  .profile img {
-    width: 240px;
-    height: 300px;
-  }
-.profile{
-  column-count: 2;
-  column-fill:auto;
+
+.profile img {
+  width: 240px;
+  height: 300px;
 }
-.profileAva{
+
+.profile {
+  display: flex;
+  position: relative;
+  flex: 1
+}
+
+.infoBlock {
+  margin-left: 20px;
+  flex: 2
+}
+
+.photoBlock {
+  flex: 1
+}
+
+.profileAva {
   column-width: 100px;
 }
+
 .contact {
   padding-left: 10px;
+  display: flex;
+  position: relative;
+
+}
+
+.key {
+  flex: content;
+  margin: 1px;
+}
+
+.aboutMeBlock {
+  display: flex;
+}
+
+.field {
+  justify-items: center;
+  text-wrap: wrap;
+  width: max-content;
+  margin: 1px;
+  align-items: flex-start;
+}
+
+.profile img {
+  border-radius: 20px;
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+
+}
+
+.profile input {
+  width: 240px
+}
+
+.hideUnput {
+  opacity: 0;
+  /* position: absolute; */
+  width: 0%;
+  height: 0%;
+}
+
+label {
+  cursor: pointer
 }

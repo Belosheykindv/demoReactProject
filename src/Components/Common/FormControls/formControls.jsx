@@ -1,9 +1,8 @@
 import React from "react"
 import styles from "./formControls.module.css"
 // import { Field } from "redux-form";
-
-import { Field } from 'react-final-form'
-
+import { Field, Form } from "react-final-form";
+import { Button, Input } from 'antd';
 export const FormCreate = ({ input, meta, fieldType, ...props }) => {
     const hasError = meta.touched && meta.error;
     return (
@@ -20,7 +19,7 @@ export const Textarea = (props) => {
     const { input, meta, child, ...restProps } = props;
     return <FormCreate {...props}><textarea {...input} {...restProps} /> </FormCreate>
 }
-export const Input = (props) => {
+export const CustopmInput = (props) => {
     const { input, meta, child, ...restProps } = props;
     return <FormCreate {...props}> <input {...input}{...restProps} /> </FormCreate>
 }

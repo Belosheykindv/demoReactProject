@@ -4,13 +4,7 @@ import store from './Redux/reduxStore';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { Suspense } from 'react';
-import AppAntD from './AppAntD';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom';
-import Preloader from './Components/Common/Preloader/preloader';
+import SamuraiJSAPP from './AppAntD';
 
 // export function useSelector(){
 //     selector(state),
@@ -19,15 +13,7 @@ import Preloader from './Components/Common/Preloader/preloader';
 let rerenderPage = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <Provider store={store}>
-                <HashRouter>
-                    <Suspense fallback={<Preloader />}>
-                        <AppAntD
-                            store={store.getState()}
-                            dispatch={store.dispatch.bind(store)} />
-                    </Suspense>
-                </HashRouter>
-            </Provider>
+            <SamuraiJSAPP />
         </React.StrictMode>,
         document.getElementById('root')
     );

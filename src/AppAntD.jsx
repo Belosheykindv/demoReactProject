@@ -1,5 +1,10 @@
 import React from 'react';
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './Redux/reduxStore';
+import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
+import { Suspense } from 'react';
 // import Header from './Components/Header/header';
 import { NavLink } from 'react-router-dom';
 import { logout } from './Redux/authReducer'
@@ -8,8 +13,10 @@ import { Route, Routes } from 'react-router-dom';
 import BeerComp from './Components/Settings/Settings';
 // import DialogsContainer from './Components/Dialogs/Dialogs-container';
 // import UsersContainer from './Components/Users/usersContainer';
+import MusicContainer from './Components/Music/Music';
 import Login from './Components/Login/login';
 import Login2 from './Components/Login/loginRFF'
+import ToDO from './Components/ToDO/todo'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from './Hoc/withRouter';
@@ -33,7 +40,7 @@ const ProfileContainer = React.lazy(() => import('./Components/Profile/profileCo
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/Dialogs-container'));
 const UsersContainer = React.lazy(() => import('./Components/Users/usersContainer'));
 const ChatPage = React.lazy(() => import('./Pages/Chat/chatPage'))
-const MusicContainer = React.lazy(() => import('./Components/Music/Music'))
+// const MusicContainer = React.lazy(() => import('./Components/Music/Music'))
 
 const App = (props) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -66,20 +73,25 @@ const App = (props) => {
               {
                 key: '3',
                 icon: <UserOutlined />,
-                label: <NavLink to='/chat'>Чат</NavLink>,
+                label: <NavLink to='/ToDO'>Список дел</NavLink>,
               },
               {
                 key: '4',
                 icon: <UserOutlined />,
-                label: <NavLink to='/music'>Музыка</NavLink>,
+                label: <NavLink to='/chat'>Чат (ws)</NavLink>,
               },
               {
                 key: '5',
                 icon: <UserOutlined />,
-                label: <NavLink to='/settings'>Пиво</NavLink>,
+                label: <NavLink to='/music'>Музыка</NavLink>,
               },
               {
                 key: '6',
+                icon: <UserOutlined />,
+                label: <NavLink to='/settings'>Пиво</NavLink>,
+              },
+              {
+                key: '7',
                 icon: <UserOutlined />,
                 label: <NavLink to='/users'>Пользователи</NavLink>,
               }
@@ -87,6 +99,7 @@ const App = (props) => {
         </Sider>
         <Layout>
           <Header
+            id='header'
             style={{
               padding: 0,
               background: colorBgContainer,
@@ -109,6 +122,7 @@ const App = (props) => {
 
           </Header >
           <Content
+            id='content'
             style={{
               margin: '24px 16px',
               padding: 24,
@@ -128,11 +142,11 @@ const App = (props) => {
               <Route path='/music' element={<MusicContainer />} />
               <Route path='/settings' element={<BeerComp />} />
               <Route path='/users' element={<UsersContainer />} />
+              <Route path='/todo' element={<ToDO />} />
               <Route path='/login' element={<Login2 />} />
               <Route path='/login2' element={<Login />} />
               <Route path='/' element={<Login2 />} />
             </Routes>
-
           </Content>
           <Footer style={{ textAlign: 'center', fontSize: 30 }}>
             Частная компания - OOO "Сошл - нетворк"
@@ -148,6 +162,18 @@ const mapStateToProps = (state) => ({
   ownerId: state.auth.id,
   isAuth: state.auth.isAuth
 })
-export default compose(
+let AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializedApp, logout }))(App);
+const SamuraiJSAPP = (props) => {
+  return <Provider store={store}>
+    <HashRouter>
+      <Suspense fallback={<Preloader />}>
+        <AppContainer
+          store={store.getState()}
+          dispatch={store.dispatch.bind(store)} />
+      </Suspense>
+    </HashRouter>
+  </Provider>
+}
+export default SamuraiJSAPP

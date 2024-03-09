@@ -39,7 +39,8 @@ const Fields = ({
 };
 const Login2 = (props) => {
     const onSubmit = (values) => {
-        props.login(values.email, values.password, values.rememberMe)
+        props.login(values.email, values.password, values.rememberMe, values.captcha)
+        values.captcha = ''
     }
     if (props.isAuth) {
         return <Navigate to={'/profile'} />
@@ -63,6 +64,7 @@ const Login2 = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div> <Field name={'email'} fieldType={Input} placeholder={"Login"} component={FormCreate} /></div>
                     <div> <Field name={'password'} type={'password'} fieldType={Input} autoComplete="on" placeholder={"Password"} component={FormCreate} /> </div>
+                    {props.captcha && <div> <img src={props.captcha} /><Field name={'captcha'} fieldType={Input} autoComplete="on" component={FormCreate} /> </div>}
                     <div> <Field name={'rememberMe'} type={'checkbox'} fieldType={'input'} component={FormCreate} /> Remember me</div>
                     {props.error && <div className={styles.formSummaryError}> {props.error} </div>}
                     <div> <button className={S.btn} type={"submit"} disabled={submitting || pristine}>Войти</button> </div>
@@ -75,6 +77,7 @@ const Login2 = (props) => {
 }
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    loginError: state.auth.error
+    loginError: state.auth.error,
+    captcha: state.auth.captchaUrl
 })
 export default connect(mapStateToProps, { login })(Login2);

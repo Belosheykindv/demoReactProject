@@ -1,3 +1,4 @@
+
 .dialogs {
     display: grid;
     grid-template-columns: 0.5fr 2fr 1fr;
@@ -84,4 +85,83 @@
     outline: 0;
     text-transform: capitalize;
     background-color: rgb(255, 255, 255);
+}
+
+.todoMain h1 {
+    font-weight: 300;
+    color: #1677ff;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
+.todoMain ul {
+    width: 100%;
+    /* flex-wrap: wrap; */
+}
+
+.todoInput {
+    display: flex;
+}
+
+.todoInput input {
+    flex: 9
+}
+
+.todoInput button {
+    margin-left: 10px;
+    font-size: 1em;
+    color: #1677ff;
+    appearance: none;
+    /* color: currentcolor; */
+    background: transparent;
+    border: 1px solid #828691;
+    width: 80px;
+    padding: 0.8em;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+}
+
+
+.todoList {
+    display: flex;
+
+}
+
+.todoList button {
+    color: var(--theme-color);
+    flex: 1;
+    margin-left: 10px;
+    font-size: 1em;
+    appearance: none;
+    /* color: currentcolor; */
+    background: transparent;
+    border: 1px solid #828691;
+    width: 80px;
+    padding: 0.8em;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+}
+
+.todoList li {
+    font-family: 'Ubuntu', sans-serif;
+    /* width: 90%;
+    flex-wrap: wrap; */
+    font-size: 1em;
+    font-weight: 400;
+    appearance: none;
+    flex: 8;
+    padding: 0.85em;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    /* background: #494847; */
+    letter-spacing: 0.02rem;
+    transition: all 0.3s ease-out;
+}
+
+.inputCB {
+    flex: 1;
+    opacity: 30%;
 }

@@ -32,7 +32,7 @@ const AddNewPostForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <Field component={FormCreate} fieldType='textarea' placeholder='Введите сообщение' name={'addNewPost'} validate={[required, maxLength30]} />
-      <div><button>Добавить пост</button></div>
+      <div><button>Добавить пост 2</button></div>
     </form>
   )
 }

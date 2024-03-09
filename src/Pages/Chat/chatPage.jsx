@@ -3,7 +3,7 @@ import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { Button, Input, theme } from "antd"
 import { useDispatch, useSelector } from "react-redux"
-import { sendMessage, startMessagesListening, stopMessagesListening, unmountChat } from "../../Redux/chatReducer"
+import { sendMessage, startMessagesListening, startStatusListening, stopMessagesListening, stopStatusListening, unmountChat } from "../../Redux/chatReducer"
 import style from './/..//../Components/Dialogs/Dialogs.module.css'
 import { withAuthRedirect } from "../../Hoc/withAuthRedirect"
 import { compose } from "redux"
@@ -18,8 +18,10 @@ const Chat = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(startMessagesListening())
+        dispatch(startStatusListening())
         return () => {
             dispatch(stopMessagesListening())
+            dispatch(stopStatusListening())
             dispatch(unmountChat())
         }
     }, [])

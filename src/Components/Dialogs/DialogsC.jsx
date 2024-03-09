@@ -7,12 +7,11 @@ import { Navigate } from "react-router-dom";
 import { Field, Form } from "react-final-form";
 import { maxLength100, required } from "../../Utils/Validators/validators";
 import { FormCreate, TextArea } from "../Common/FormControls/formControls";
-import { Input } from "antd";
+import { Input, List, Avatar } from "antd";
 
 const Dialogs = (props) => {
     // const messageArea = React.createRef();
     const onSubmit = (values) => {
-
         props.addDialogMessage(values.newMessageBody)
         values.newMessageBody = ''
         setButtonStatus(false)
