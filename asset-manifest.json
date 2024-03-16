@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/demoReactProject/static/css/main.5967c7d2.css",
-    "main.js": "/demoReactProject/static/js/main.dff5ee1d.js",
+    "main.css": "/demoReactProject/static/css/main.2c064e8f.css",
+    "main.js": "/demoReactProject/static/js/main.6605915c.js",
     "static/css/597.feef8f69.chunk.css": "/demoReactProject/static/css/597.feef8f69.chunk.css",
-    "static/js/597.da10dd37.chunk.js": "/demoReactProject/static/js/597.da10dd37.chunk.js",
-    "static/css/297.c5c1b306.chunk.css": "/demoReactProject/static/css/297.c5c1b306.chunk.css",
-    "static/js/297.9788f141.chunk.js": "/demoReactProject/static/js/297.9788f141.chunk.js",
+    "static/js/597.7e53a83c.chunk.js": "/demoReactProject/static/js/597.7e53a83c.chunk.js",
+    "static/css/87.38603d48.chunk.css": "/demoReactProject/static/css/87.38603d48.chunk.css",
+    "static/js/87.eeceae8b.chunk.js": "/demoReactProject/static/js/87.eeceae8b.chunk.js",
     "static/css/806.3d07072d.chunk.css": "/demoReactProject/static/css/806.3d07072d.chunk.css",
     "static/js/806.0543879e.chunk.js": "/demoReactProject/static/js/806.0543879e.chunk.js",
     "static/css/470.b868bc61.chunk.css": "/demoReactProject/static/css/470.b868bc61.chunk.css",
@@ -38,12 +38,12 @@
     "static/media/next.svg": "/demoReactProject/static/media/next.7c9d7c79bc1bddbc64b7cda0cad6f96b.svg",
     "index.html": "/demoReactProject/index.html",
     "static/media/play.svg": "/demoReactProject/static/media/play.ae28f2f8ed43f26bbecc733fd80f370c.svg",
-    "main.5967c7d2.css.map": "/demoReactProject/static/css/main.5967c7d2.css.map",
-    "main.dff5ee1d.js.map": "/demoReactProject/static/js/main.dff5ee1d.js.map",
+    "main.2c064e8f.css.map": "/demoReactProject/static/css/main.2c064e8f.css.map",
+    "main.6605915c.js.map": "/demoReactProject/static/js/main.6605915c.js.map",
     "597.feef8f69.chunk.css.map": "/demoReactProject/static/css/597.feef8f69.chunk.css.map",
-    "597.da10dd37.chunk.js.map": "/demoReactProject/static/js/597.da10dd37.chunk.js.map",
-    "297.c5c1b306.chunk.css.map": "/demoReactProject/static/css/297.c5c1b306.chunk.css.map",
-    "297.9788f141.chunk.js.map": "/demoReactProject/static/js/297.9788f141.chunk.js.map",
+    "597.7e53a83c.chunk.js.map": "/demoReactProject/static/js/597.7e53a83c.chunk.js.map",
+    "87.38603d48.chunk.css.map": "/demoReactProject/static/css/87.38603d48.chunk.css.map",
+    "87.eeceae8b.chunk.js.map": "/demoReactProject/static/js/87.eeceae8b.chunk.js.map",
     "806.3d07072d.chunk.css.map": "/demoReactProject/static/css/806.3d07072d.chunk.css.map",
     "806.0543879e.chunk.js.map": "/demoReactProject/static/js/806.0543879e.chunk.js.map",
     "470.b868bc61.chunk.css.map": "/demoReactProject/static/css/470.b868bc61.chunk.css.map",
@@ -55,7 +55,7 @@
     "803.2c11d2ee.chunk.js.map": "/demoReactProject/static/js/803.2c11d2ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5967c7d2.css",
-    "static/js/main.dff5ee1d.js"
+    "static/css/main.2c064e8f.css",
+    "static/js/main.6605915c.js"
   ]
 }
