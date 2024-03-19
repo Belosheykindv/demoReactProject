@@ -82,12 +82,20 @@ const AddMessageForm = () => {
             setButtonStatus(true)
     }
     return <div>
-        <div><Input size="large" showCount maxLength={100} onInput={(e) => setMessage(e.currentTarget.value)} ref={inputRef} name={'chatInput'} onChange={(e) => inputHandler(e.currentTarget.value)} value={message} placeholder="Введите сообщение" ></Input></div>
+        <div style={{ display: 'flex', marginLeft:'10px' }}>
+            <Input size="large" showCount maxLength={100} onInput={(e) => setMessage(e.currentTarget.value)} ref={inputRef} name={'chatInput'} onChange={(e) => inputHandler(e.currentTarget.value)} value={message} placeholder="Введите сообщение" ></Input>
+            <Button
+                className={btnStatus ? style.btn : style.disBtn}
+                disabled={status !== 'ready' && btnStatus !== true}
+                onClick={sendMessageHandler}>Отправить</Button>
+        </div>
         <br></br>
-        <div><button
-            className={btnStatus ? style.btn : style.disBtn}
-            disabled={status !== 'ready' && btnStatus !== true}
-            onClick={sendMessageHandler}>Отправить</button></div>
+        {/* <div>
+            <button
+                className={btnStatus ? style.btn : style.disBtn}
+                disabled={status !== 'ready' && btnStatus !== true}
+                onClick={sendMessageHandler}>Отправить</button>
+        </div> */}
     </div>
 }
 // export default ChatPage;

@@ -32,6 +32,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
+import HookForm from './Components/HookFrom/hookForm';
 
 // import { ChatPage } from './Pages/Chat/chatPage';
 
@@ -73,25 +74,30 @@ const App = (props) => {
               {
                 key: '3',
                 icon: <UserOutlined />,
-                label: <NavLink to='/ToDO'>Список дел</NavLink>,
+                label: <NavLink to='/hookForm'>Hook Form + RTK</NavLink>,
               },
               {
                 key: '4',
                 icon: <UserOutlined />,
-                label: <NavLink to='/chat'>Чат (ws)</NavLink>,
+                label: <NavLink to='/ToDO'>Список дел</NavLink>,
               },
               {
                 key: '5',
                 icon: <UserOutlined />,
-                label: <NavLink to='/music'>Музыка</NavLink>,
+                label: <NavLink to='/chat'>Чат (ws)</NavLink>,
               },
               {
                 key: '6',
                 icon: <UserOutlined />,
-                label: <NavLink to='/settings'>Пиво</NavLink>,
+                label: <NavLink to='/music'>Музыка</NavLink>,
               },
               {
                 key: '7',
+                icon: <UserOutlined />,
+                label: <NavLink to='/settings'>Пиво</NavLink>,
+              },
+              {
+                key: '8',
                 icon: <UserOutlined />,
                 label: <NavLink to='/users'>Пользователи</NavLink>,
               }
@@ -145,6 +151,7 @@ const App = (props) => {
               <Route path='/todo' element={<ToDO />} />
               <Route path='/login' element={<Login2 />} />
               <Route path='/login2' element={<Login />} />
+              <Route path='/hookForm' element={<HookForm />} />
               <Route path='/' element={<Login2 />} />
             </Routes>
           </Content>

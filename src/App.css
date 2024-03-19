@@ -9,16 +9,22 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr; */
   /* grid-gap: 10px; */
-  
+
 }
+
 .loginPhoto {
   height: 40px;
   width: 40px;
   border-radius: 5px;
-align-items: baseline;
+  align-items: baseline;
 }
+
 .ava img {
   width: 200;
   height: 200;
   color: rgb(197, 229, 255);
+}
+#root {
+  display: flex;
+  flex-direction: column;
 }
