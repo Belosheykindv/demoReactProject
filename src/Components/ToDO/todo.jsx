@@ -40,7 +40,7 @@ const ToDolist = (props) => {
                     <Input name={'postInput'} showCount={true} placeholder="Введите новую задачу" onInput={(e) => { buttonHandler(e.currentTarget.value) }} />
                 </AntDForm.Item>
                 <AntDForm.Item className={s.todoBtnBlock}>
-                    <Button className={s.todoBtn} disabled={isActive != true} htmlType="submit">Добавить</Button>
+                    <Button type='primary' disabled={isActive != true} htmlType="submit">Добавить</Button>
                 </AntDForm.Item>
             </AntDForm>
 

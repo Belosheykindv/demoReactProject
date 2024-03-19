@@ -1,0 +1,38 @@
+.inputBlock {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+.submitInput {
+    margin: 10px;
+    display: flex;
+}
+.inputBlock p {
+    color: red;
+}
+
+.elem {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+}
+
+.elemFieldName {
+    flex: 1
+}
+
+.elemField {
+    flex: 3;
+}
+
+.elemOutput {
+    flex: 2;
+    text-align: center;
+    color: var(--theme-color);
+}
+
+.errorField p {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
