@@ -14,7 +14,7 @@ import { IRootStore } from "../../Redux/reduxStore";
 interface GenericIdentityFn<Type> {
     (arg: Type): Type;
 }
-const Dialogs = (props: { auth: boolean; }) => {
+const Dialogs = (props: { auth: boolean; dialogsPage:any }) => {
     const dispatch = useDispatch()
     const dialogs = useSelector((state: IRootStore) => state.dialogsPage.dialogs)
     const messages = useSelector((state: IRootStore) => state.dialogsPage.messages)
@@ -35,7 +35,7 @@ const Dialogs = (props: { auth: boolean; }) => {
         else
             setButtonStatus(true)
     }
-    let dialogElements = dialogs.map(d => <DialogItem name={d.name} id={d.id} imgSrc={d.imgSrc} key={d.id} />);
+    let dialogElements = dialogs.map(d => <DialogItem ingridients={props.dialogsPage.dialogs} name={d.name} id={d.id} imgSrc={d.imgSrc} key={d.id} />);
     let messageElement = messages.map(m => <Message message={m.message} key={m.id} />);
     if (props.auth === false) return <Navigate to={'/login'} />
     return (
@@ -62,14 +62,6 @@ const Dialogs = (props: { auth: boolean; }) => {
                                     )}
                                 </Field>
 
-                            </div>
-                            <div>
-                                <br />
-                                {/* <Button
-                                    ghost={true}
-                                    disabled={status !== true}
-                                    type='primary'
-                                    htmlType={"submit"} >Отправить сообщение</Button> */}
                             </div>
                         </form>)}
                 />

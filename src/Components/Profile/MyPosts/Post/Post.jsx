@@ -1,15 +1,17 @@
 import React, { createRef } from 'react';
 import P from './Post.module.scss';
-import { addPostLikeActionCreator } from '../../../../Redux/profilePage-reducer';
 import { Button } from 'antd';
+import { addLike, deletePost } from '../../../../Redux/profilePage-reducer';
+import { useDispatch } from 'react-redux';
 const Post = React.memo((props) => {
+  const dispatch = useDispatch()
   let onAddLike = () => {
     let postId = props.postId
-    props.addLike(postId)
+    dispatch(addLike(postId))
   }
   const onDeletePost = () => {
     let postId = props.postId
-    props.deletePost(postId)
+    dispatch(deletePost(postId))
   }
   return <div key={props.postId} className={P.postContainer}>
     <div className={P.imgContainer}> <img src={props.img}></img></div>

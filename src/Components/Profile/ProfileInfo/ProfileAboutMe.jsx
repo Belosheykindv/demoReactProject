@@ -13,11 +13,11 @@ const maxLength14 = maxLengthCreator(14)
 const maxLength30 = maxLengthCreator(30)
 const maxLength40 = maxLengthCreator(40)
 
-export const ProfileAboutMe = ({ profile, ownerId, updateAboutMe, userId, key, status, updateUserProfileStatus }) => {
+export const ProfileAboutMe = ({ profile, ownerId, updateAboutMe, userId, key }) => {
   const [editMode, setEditMode] = useState(false);
   return <div>
     {!editMode
-      ? <div> <Profile key={key} profile={profile} userId={userId} editModeOn={() => { setEditMode(true) }} status={status} updateUserProfileStatus={updateUserProfileStatus} ownerId={ownerId} /></div>
+      ? <div> <Profile key={key} profile={profile} userId={userId} editModeOn={() => { setEditMode(true) }} ownerId={ownerId} /></div>
       : <div><ProfileForm key={key} profile={profile} updateAboutMe={updateAboutMe} editModeOff={() => { setEditMode(false) }} /></div>}
   </div>
 }
@@ -26,16 +26,13 @@ const Contact = ({ contactTitle, contactValue }) => {
   return <div> <b>{contactTitle}</b>: {contactValue} </div>
 }
 
-const Profile = ({ profile, userId, editModeOn, key, ownerId, status, updateUserProfileStatus }) => {
+const Profile = ({ profile, userId, editModeOn }) => {
   return <div>
     {!userId && <label htmlFor="editAboutMe">Редактировать</label>}
     {!userId && <button onClick={editModeOn} id='editAboutMe' style={{ 'opacity': 0 }}>Редактировать</button>}
-    <div><ProfileFuncStatus
-      key={key}
-      userId={userId}
-      ownerId={ownerId}
-      status={status}
-      updateUserProfileStatus={updateUserProfileStatus} /></div>
+    <div>
+      <ProfileFuncStatus />
+    </div>
     <div><b>Кто я - </b>{profile.fullName}</div>
     <div><b>Обо мне - </b> {profile.aboutMe}</div>
     <div><b>В поисках работы - </b>{profile.lookingForAJob ? "Да" : "Нет"}</div>

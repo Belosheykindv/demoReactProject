@@ -19,6 +19,6 @@ const addBeerAc = (beer) => {
 }
 export const getRandomBeer = () => async (dispatch) => {
     const data = await beerAPI.getBeer()
-    dispatch(addBeerAc(data));
+    dispatch(addBeerAc(data))
 }
 export default settingPageReducer

@@ -10,7 +10,6 @@ const Profile = (props) => {
       userId={props.userId}
       ownerId={props.ownerId}
       userStatus={props.userStatus}
-      updateUserProfileStatus={props.updateUserProfileStatus}
       updateAboutMe={props.updateAboutMe}
       savePhoto={props.savePhoto}
       updateUserPhoto={props.updateUserPhoto}

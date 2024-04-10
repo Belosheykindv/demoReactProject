@@ -28,4 +28,59 @@
     height: 60px;
     border-radius: 30px;
 
+}.modalBlock{
+    display: grid;
+    grid-template-areas: 
+    'A A B'
+    'A A B';
+}
+.imgBlock{
+    grid-area: 'A';
+
+}
+.descriptionBlock{
+grid-area: 'B';
+}
+.imgBlock {
+    display: flex;
+    align-items: center;
+}
+.imgBlock img {
+width: 450px;
+height: 450px;
+margin-right: 10px;
+}
+.name{}
+.lowDescription{
+
+}
+.btnBlock{
+
+}
+.btnBlock button {
+    width: 120px;
+}
+.btnBlock button .active{
+    background-color: grey;
+}
+.cardBlock{
+    display: flex;
+    height: 450px;
+    overflow: scroll;
+    flex-wrap: wrap;
+}
+.cardBlock p {
+    margin-top: 15px ;
+    font-weight: 700;
+}
+.cardBlock img {
+    padding: 5px;
+    /* height: min-content; */
+}
+.ingrDescription{
+    font-size: small;
+}
+.ingrPrice {
+    font-weight: bold;
+    font-size: large;
 }

@@ -5,7 +5,7 @@ import MyPosts from './MyPosts';
 import { withAuthRedirect } from '../../../Hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { withRouter } from '../../../Hoc/withRouter';
-import { addLike, addPost, deletePost } from '../../../Redux/profilePage-reducer';
+// import { addLike, addPost, deletePost } from '../../../Redux/profilePage-reducer';
 const mapStateToProps = (state) => {
   return {
     profilePage: (state.profilePage),
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-  connect(mapStateToProps, { addPost, addLike, deletePost }),
+  connect(mapStateToProps, { }),
   withRouter,
   withAuthRedirect
 )(MyPosts);

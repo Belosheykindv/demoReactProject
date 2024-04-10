@@ -49,6 +49,7 @@
 
 .todoList {
     display: flex;
+    flex-direction: column;
     margin: 5px;
     align-items: center;
     margin-bottom: 10px;
@@ -57,21 +58,17 @@
     background-color: rgba(200, 209, 245, 0)
 }
 
-/* .todoList button {
-    color: var(--theme-color);
-    border-radius: 10px;
-    flex: 1;
-    margin-left: 10px;
-    font-size: 1em;
-    appearance: none;
-    background: transparent;
-    border: 1px solid #828691;
-    width: 80px;
-    padding: 0.8em;
-    cursor: pointer;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-} */
+.todoItemCollapse {
+    display: flex;
+
+}
+
+.todoItemStandart {
+    display: flex;
+    width: 700px;
+    margin-bottom: 20px;
+}
+
 
 .todoList li {
     font-family: 'Verdana', sans-serif;
@@ -87,12 +84,12 @@
     transition: all 0.3s ease-out;
     margin-bottom: 5px;
     padding-left: 20px;
-    width: min-content;
+    /* width: min-content; */
     overflow-wrap: anywhere;
     hyphens: auto;
     white-space: pre-wrap;
-    display: flex;
- 
+    /* display: flex; */
+
 }
 
 .inputCB {
