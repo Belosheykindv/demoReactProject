@@ -5,7 +5,8 @@ import { stopSubmit } from "redux-form";
 import Anonym from '../Images/userPhoto.png'
 import { v1 } from 'uuid'
 import { Dispatch } from "react";
-import { GetState, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ActionCreatorWithPayload, GetState, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { AppDispatch, IRootStore } from "./reduxStore";
 
 type postElType = {
     id: string,
@@ -41,9 +42,14 @@ type contactType = {
     youtube: string | null
     mainLink: string | null
 }
-type photosType = {
+export type photosType = {
     small: string | null
     large: string | null
+}
+
+interface GenericDispatch<P, T> {
+    payload: P
+    type: T
 }
 export type profileType = {
     userId: number
@@ -87,7 +93,7 @@ const profilePageSlice = createSlice({
     initialState,
     reducers: {
         addPost: (state, action: PayloadAction<string>) => {
-            console.log('Внутри диспатча постов')
+            // console.log('Внутри диспатча постов')
             let newPost = {
                 id: v1(),
                 message: action.payload,
@@ -102,7 +108,7 @@ const profilePageSlice = createSlice({
             }
         },
         deletePost: (state, action: PayloadAction<string>) => {
-            console.log('Внутри диспатча удаления постов')
+            // console.log('Внутри диспатча удаления постов')
             return {
                 ...state,
                 posts: state.posts.filter(p => p.id !== action.payload),
@@ -119,11 +125,9 @@ const profilePageSlice = createSlice({
             // return stateCopy;
         },
         setUserProfile: (state, action: PayloadAction<profileType>) => {
-            console.log('Внутри диспатча профайла')
             return { ...state, profile: action.payload }
         },
         setUserProfileStatus: (state, action: PayloadAction<string>) => {
-            console.log('Внутри диспатча статуса')
             return { ...state, profileStatus: action.payload }
         },
         updateProfilePhoto: (state, action: PayloadAction<photosType>) => {
@@ -132,23 +136,23 @@ const profilePageSlice = createSlice({
 
     }
 })
-export const getUserProfile = (userId: number) => async (dispatch: Dispatch<any>) => {
+export const getUserProfile = (userId: number | null) => async (dispatch: AppDispatch) => {
     const data = await profileAPI.getUserProfile(userId)
     dispatch(setUserProfile(data));
 }
-export const getUserProfileStatus = (userId: number) => async (dispatch: Dispatch<any>) => {
+export const getUserProfileStatus = (userId: number) => async (dispatch: Dispatch<GenericDispatch<string, "profilePageSlice/setUserProfileStatus">>) => {
     const data = await profileAPI.getUserProfileStatus(userId)
     dispatch(setUserProfileStatus(data));
 }
 
-export const updateUserProfileStatus = (status: string) => async (dispatch: Dispatch<any>) => {
+export const updateUserProfileStatus = (status: string) => async (dispatch: Dispatch<GenericDispatch<string, "profilePageSlice/setUserProfileStatus">>) => {
     const response = await profileAPI.updateUserProfileStatus(status)
     if (response.resultCode === 0) {
         dispatch(setUserProfileStatus(status))
     }
 }
 
-export const updateAboutMe = (profile: profileType) => async (dispatch: any, getState: any) => {
+export const updateAboutMe = (profile: profileType) => async (dispatch: AppDispatch, getState: IRootStore) => {
     const userId = getState().auth.id
     const response = await profileAPI.updateAboutMe(profile)
     if (response.resultCode === 0) {

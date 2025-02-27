@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import P from './ProfileInfo.module.css';
+import P from './ProfileInfo.module.scss';
 import Anonym from '../../../Images/userPhoto.png'
 import Preloader from '../../Common/Preloader/preloader';
 import { ProfileAboutMe } from './ProfileAboutMe';
@@ -20,30 +20,28 @@ const ProfileInfo = React.memo((props) => {
     }
   }
 
-  return <div>
-
-    <div className={P.profile}>
-      <div className={P.photoBlock}>
-        {!props.userId && <label htmlFor="upload-photo">Загрузить новое фото</label>}
-        <img
-          src={props.profile.photos.large || Anonym}></img>
-        {isError && <div style={{ 'border': '2px', 'color': 'red' }}> Файл не должен превышать 4МБ </div>}
-        {!props.userId && <input className={P.hideUnput} id="upload-photo" onChange={onChange} type={'file'} />
-        }
-      </div>
-      <div className={P.infoBlock}>
-        <div>{<ProfileAboutMe
-          key={props.key}
-          profile={props.profile}
-          userId={props.userId}
-          ownerId={props.ownerId}
-          updateAboutMe={props.updateAboutMe}
-          editModeAboutMe={props.editModeAboutMe}
-          status={props.userStatus}
-           />}</div>
-      </div>
+  return <div className={P.profile}>
+    <div className={P.photoBlock}>
+      {!props.userId && <label htmlFor="upload-photo">Загрузить новое фото</label>}
+      <img
+        src={props.profile.photos.large || Anonym}></img>
+      {isError && <div style={{ 'border': '2px', 'color': 'red' }}> Файл не должен превышать 4МБ </div>}
+      {!props.userId && <input className={P.hideUnput} id="upload-photo" onChange={onChange} type={'file'} />
+      }
+    </div>
+    <div className={P.infoBlock}>
+      <div>{<ProfileAboutMe
+        key={props.key}
+        profile={props.profile}
+        userId={props.userId}
+        ownerId={props.ownerId}
+        updateAboutMe={props.updateAboutMe}
+        editModeAboutMe={props.editModeAboutMe}
+        status={props.userStatus}
+      />}</div>
     </div>
   </div>
+
 }
 )
 

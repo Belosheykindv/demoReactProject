@@ -12,7 +12,8 @@ import thunkMiddleware from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
 import appReducer from "./appReducer";
 import todoReducer from "./todoReducer";
-export type IRootStore = ReturnType<typeof store.getState>
+export type IRootStore = typeof store.getState
+export type AppDispatch = typeof store.dispatch
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
 let reducers = combineReducers({
     profilePage: profileReducer,

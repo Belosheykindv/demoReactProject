@@ -58,7 +58,7 @@ import { connect } from "react-redux";
 // }
 
 const ProfileFuncStatus = (props) => {
-    console.log('Рэндер статус')
+    // console.log('Рэндер статус')
     const userStatus = useSelector(state => state.profilePage.profileStatus)
     // const userId = useSelector(state => state.auth.id)
     const userId = useParams()

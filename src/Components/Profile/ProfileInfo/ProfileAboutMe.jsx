@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Preloader from '../../Common/Preloader/preloader';
-import S from './ProfileInfo.module.css'
+import S from './ProfileInfo.module.scss'
 import styles from "../../Common/FormControls/formControls.module.css"
 import { maxLengthCreator, required } from '../../../Utils/Validators/validators';
 import { Field, reduxForm } from 'redux-form';
@@ -14,6 +14,16 @@ const maxLength30 = maxLengthCreator(30)
 const maxLength40 = maxLengthCreator(40)
 
 export const ProfileAboutMe = ({ profile, ownerId, updateAboutMe, userId, key }) => {
+  const [count2, setCount2] = useState(0)
+
+
+
+  useEffect(() => {
+    console.log('Use1')
+    return () => {
+      console.log('clean1')
+    }
+  }, [count2])
   const [editMode, setEditMode] = useState(false);
   return <div>
     {!editMode

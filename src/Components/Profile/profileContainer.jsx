@@ -57,7 +57,7 @@ export function withRouter(Component) {
 // }
 
 const ProfileContainer = (props) => {
-  console.log('Внутри контейнера профайл')
+  // console.log('Внутри контейнера профайл')
   const refreshProfile = () => {
     const userId = props.router.params.userId || props.ownerUserId;
     props.getUserProfile(userId)

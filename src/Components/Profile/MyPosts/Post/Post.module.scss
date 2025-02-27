@@ -1,84 +1,72 @@
-$defaulBorderRadius :5px;
-$defaulFontWeight: bold;
-
-.item {
-  color: red;
-  font-style: italic;
-  font-weight: bold;
-  text-shadow: 5px;
-  margin-top: 10px;
-}
-
-.item img {
-  height: 70px;
-  max-width: 60px;
-  border-radius: 30px;
-}
-
-.item button {
-  border-radius: $defaulBorderRadius;
-  font-weight: $defaulFontWeight;
-  margin: 5px;
-}
-
-// .message {
-//   color: black;
-//   font-weight: lighter;
-//   position: absolute;
-//   margin-top: 1.5em;
-//   margin: 5px;
-// }
-
 .postContainer {
   display: flex;
   margin-bottom: 10px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  background-color: rgba(245, 246, 250, 0.616)
-  //  justify-content: space-around;
+  background-color: rgba(245, 246, 250, 0.616);
 
-}
+  img {
+    height: 70px;
+    max-width: 60px;
+    border-radius: 10px;
+  }
 
-.postContainer img {
-  height: 70px;
-  max-width: 60px;
-  border-radius: 10px;
-}
+  .postContainer .imgContainer {
+    flex-basis: 60px;
+  }
 
-.imgContainer {
-  flex-basis: 60px;
-}
 
-.msgContainer {
-  flex: 10;
-  margin-bottom: 5px;
-  padding-left: 10px;
-  width: min-content;
-  overflow-wrap: anywhere;
-  hyphens: auto;
-  white-space: pre-wrap
-}
+  .btnContainer {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
 
-.btnContainer {
-  // width: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  text-align: end;
-  align-items: center;
-  // flex-basis: 12px;
-}
 
-.likeBtn {
-  width: 60px;
-}
 
-.shareBtn {
-  width: 60px;
-}
+    .delBtn {
+      display: flex;
+      justify-content: end;
 
-.delBtn {
-  flex: 1;
-  height: 100px;
-  align-items: center;
-  height: auto;
+      button {
+        padding: 0;
+      }
+    }
+  }
+
+  .btnBlock1 {
+    display: flex;
+    // flex-direction: column;
+    text-align: end;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .likeBtn {
+      width: fit-content;
+    }
+
+    .shareBtn {
+      width: fit-content;
+    }
+
+    button {
+      min-width: 22px;
+      max-width: 52px;
+      padding: 0;
+      background-color: rgba(245, 246, 250, 0.616);
+      border: none;
+    }
+  }
+
+  .msgContainer {
+    flex: 12;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    width: min-content;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    white-space: pre-wrap
+  }
+
 }
