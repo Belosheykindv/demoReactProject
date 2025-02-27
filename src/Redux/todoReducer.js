@@ -33,6 +33,7 @@ const todoReducer = (state = initialReducer, action) => {
                 toDos: [...state.toDos]
             };
             let toDo = stateCopy.toDos.find(p => p.id === action.data.currentTarget.id)
+            console.log('todo', state)
             if (toDo.isChecked === false) { toDo.isChecked = true } else  { toDo.isChecked = false }
 
             return stateCopy;

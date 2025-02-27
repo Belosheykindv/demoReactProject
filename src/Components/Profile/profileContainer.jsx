@@ -6,7 +6,8 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { withAuthRedirect } from '../../Hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { maxLengthCreator } from '../../Utils/Validators/validators';
-function withRouter(Component) {
+
+export function withRouter(Component) {
   function ComponentWithRouterProp(props) {
     let location = useLocation();
     let navigate = useNavigate();
@@ -56,23 +57,23 @@ function withRouter(Component) {
 // }
 
 const ProfileContainer = (props) => {
+  // console.log('Внутри контейнера профайл')
   const refreshProfile = () => {
     const userId = props.router.params.userId || props.ownerUserId;
     props.getUserProfile(userId)
     props.getUserProfileStatus(userId)
-    props.getUserAboutMe(userId)
+    // props.getUserAboutMe(userId)
   }
-  useEffect(() => {
-    refreshProfile()
-  }, [props.router.params.userId]);
-  useEffect(() => { refreshProfile() }, [])
+  // useEffect(() => {
+  //   refreshProfile()
+  // }, [props.router.params.userId]);
+  useEffect(() => { refreshProfile() }, [props.router.params.userId])
   return <div>
     <Profile {...props}
       profile={props.profile}
       userId={props.router.params.userId}
       ownerId={props.ownerUserId}
       userStatus={props.userStatus}
-      updateUserProfileStatus={props.updateUserProfileStatus}
       updateAboutMe={props.updateAboutMe}
       updateUserPhoto={props.updateUserPhoto}
       editModeAboutMe={props.editModeAboutMe}
@@ -91,7 +92,8 @@ let matStateToProps = (state) => ({
   // lookingForAJobDescription: state.profilePage.lookingForAJobDescription
 })
 export default compose(
-  connect(matStateToProps, { getUserProfile, getUserProfileStatus, updateUserProfileStatus, updateAboutMe, getUserAboutMe, updateUserPhoto, maxLengthCreator }),
+  connect(matStateToProps, { getUserProfile, getUserProfileStatus, updateAboutMe,
+     updateUserPhoto, maxLengthCreator }),
   withRouter,
   withAuthRedirect
 )(ProfileContainer)

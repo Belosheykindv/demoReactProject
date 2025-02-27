@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { Provider } from 'react-redux';
 import store from './Redux/reduxStore';
 import { BrowserRouter } from 'react-router-dom';
@@ -54,10 +54,12 @@ const App = (props) => {
   } else
     return (
       <Layout
-        className='app-wrapper'
+        className={`${collapsed ? 'app-wrapper-on' : 'app-wrapper-off'}`}
       >
-        <Sider trigger={null} collapsible collapsed={collapsed}>
-          <Menu theme="dark"
+        <Sider trigger={null} collapsible collapsed={collapsed}
+        >
+          <Menu
+            theme="dark"
             mode="inline"
             defaultSelectedKeys={['1']}
             items={[

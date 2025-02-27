@@ -26,50 +26,7 @@ import song7 from './assets/Music/Perry Como - Magic Moments.mp3'
 import song8 from './assets/Music/VOJ, Narvent - Memory Reboot.mp3'
 import song9 from './assets/Music/LXST CXNTURY-Andromeda.mp3'
 
-// function importAll(r) {
-//     return r.keys().map(r);
-// }
 
-// const importedSongs = importAll(require.context('../../Music', false, /\.(mp3)$/));
-// const listOfsongs = importedSongs.map(s => s.replace(/.*\//, '').replace(/\..*3/, ''))
-const script = document.createElement("script");
-script.src = "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js";
-script.async = true;
-document.body.appendChild(script);
-
-// const Test = () => {
-//     const jsmediatags = window.jsmediatags;
-//     const onLoad = (e) => {
-
-//         jsmediatags.read(e.target.files[0], {
-//             onSuccess: function (tag) {
-//                 const data = tag.tags.picture.data;
-//                 const format = tag.tags.picture.format;
-//                 let base64String = '';
-//                 for (let i = 0; i < data.length; i++)
-//                     base64String += String.fromCharCode(data[i])
-//                 document.querySelector('#songImg').style.backgroundImage = `url(data:${format};base64,${window.btoa(base64String)})`
-//                 document.querySelector('#title').textContent = tag.tags.title
-//                 document.querySelector('#artist').textContent = tag.tags.artist
-//                 // console.log(tag)
-//                 // console.log(importedSongs)
-//             },
-//             onError: function (error) {
-//                 // handle error
-//                 console.log(error);
-//             }
-//         });
-
-//     }
-
-//     return <div>
-//         <input type="file" name="" id="inputMP3" accept=".mp3" onChange={onLoad} />
-//         <div id='songImg'> </div>
-//         <p id='title'></p>
-//         <p id="artist"></p>
-
-//     </div>
-// }
 let tracks = [
     {
         title: "OSAKA",
@@ -136,22 +93,6 @@ let tracks = [
     }
 
 ]
-// function unlockAudioContext(audioCtx) {
-//     if (audioCtx.state !== 'suspended') return;
-//     const b = document.body;
-//     const events = ['touchstart', 'touchend', 'mousedown', 'keydown'];
-//     events.forEach(e => b.addEventListener(e, unlock, false));
-//     function unlock() { audioCtx.resume().then(clean); }
-//     function clean() { events.forEach(e => b.removeEventListener(e, unlock)); }
-// }
-// const Backdrop = ({ activeColor, trackIndex, isPlaying }) => {
-//     useEffect(() => {
-//         document.documentElement.style.setProperty("--active-color", activeColor);
-//     }, [trackIndex, activeColor]);
-
-//     return <div className={`color-backdrop ${isPlaying ? "playing" : "idle"}`} />;
-// };
-
 const Music = React.memo((props) => {
 
     const [trackIndex, setTrackIndex] = useState(0);

@@ -1,7 +1,10 @@
 
 import React, { useEffect } from "react";
 import { useState } from "react";
-
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserProfileStatus, updateUserProfileStatus } from "../../Redux/profilePage-reducer";
+import { connect } from "react-redux";
 // class ProfileStatus extends React.Component {
 //     state = {
 //         editMode: false,
@@ -55,16 +58,23 @@ import { useState } from "react";
 // }
 
 const ProfileFuncStatus = (props) => {
+    // console.log('Рэндер статус')
+    const userStatus = useSelector(state => state.profilePage.profileStatus)
+    // const userId = useSelector(state => state.auth.id)
+    const userId = useParams()
     const [editMode, setEditMode] = useState(false)
-    const [status, setStatus] = useState(props.status)
+    const [status, setStatus] = useState(userStatus)
+    const dispatch = useDispatch()
     const activateEditMode = () => {
-        if (!props.userId) {
+        console.log('Эдит мод')
+        if (!userId.userId) {
             setEditMode(true)
         }
     }
     const deActivateEditMode = () => {
+        console.log('Эдит мод2')
         setEditMode(false)
-        props.updateUserProfileStatus(status)
+        dispatch(updateUserProfileStatus(status))
     }
     const onStatusChange = (e) => {
         setStatus(e.currentTarget.value)
@@ -75,7 +85,7 @@ const ProfileFuncStatus = (props) => {
             <div>
                 <span
                     onClick={activateEditMode}
-                ><b>Статус - </b>{props.status || 'пусто'}</span>
+                ><b>Статус - </b>{userStatus || 'пусто'}</span>
             </div>
         }
         {
@@ -84,7 +94,7 @@ const ProfileFuncStatus = (props) => {
                 <input
                     onChange={onStatusChange}
                     autoFocus={true}
-                    defaultValue={props.status}></input>
+                    defaultValue={userStatus}></input>
                 <button onClick={deActivateEditMode}>Сохранить</button>
             </div>
         }

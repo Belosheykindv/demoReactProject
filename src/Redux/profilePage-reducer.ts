@@ -5,14 +5,9 @@ import { stopSubmit } from "redux-form";
 import Anonym from '../Images/userPhoto.png'
 import { v1 } from 'uuid'
 import { Dispatch } from "react";
-const ADD_POST = 'ADD-POST';
-const DELETE_POST = 'DELETE_POST';
-const ADD_LIKE = 'ADD-LIKE';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_USER_PROFILE_STATUS = 'SET_USER_PROFILE_STATUS';
-// const UPDATE_ABOUT_ME = 'UPDATE_ABOUT_ME';
-const SET_USER_ABOUT_ME = 'SET_USER_ABOUT_ME'
-const UPDATE_PROFILE_PHOTO = 'UPDATE_PROFILE_PHOTO'
+import { ActionCreatorWithPayload, GetState, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { AppDispatch, IRootStore } from "./reduxStore";
+
 type postElType = {
     id: string,
     message: string,
@@ -36,7 +31,6 @@ type initialStateType = {
     editModeAboutMe: boolean,
     key: null | number,
     post?: postElType | null
-
 }
 type contactType = {
     github: string | null
@@ -48,9 +42,14 @@ type contactType = {
     youtube: string | null
     mainLink: string | null
 }
-type photosType = {
+export type photosType = {
     small: string | null
     large: string | null
+}
+
+interface GenericDispatch<P, T> {
+    payload: P
+    type: T
 }
 export type profileType = {
     userId: number
@@ -89,24 +88,15 @@ let initialState: initialStateType = {
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
 }
-type actionType = {
-    type: string,
-    newPostText: string,
-    postId: number | string,
-    profile: profileType,
-    profileStatus: string | null,
-    aboutMe: string | null,
-    photos: photosType
-
-
-}
-const profileReducer = (state = initialState, action: actionType): initialStateType => {
-
-    switch (action.type) {
-        case ADD_POST: {
+const profilePageSlice = createSlice({
+    name: 'profilePageSlice',
+    initialState,
+    reducers: {
+        addPost: (state, action: PayloadAction<string>) => {
+            // console.log('Внутри диспатча постов')
             let newPost = {
                 id: v1(),
-                message: action.newPostText,
+                message: action.payload,
                 likesCount: getRandomInt(100),
                 share: getRandomInt(100),
                 imgSrc: Anonym
@@ -115,144 +105,56 @@ const profileReducer = (state = initialState, action: actionType): initialStateT
                 ...state,
                 posts: [...state.posts, newPost],
                 newPostText: ''
-            };
-        }
-        case DELETE_POST: {
-
+            }
+        },
+        deletePost: (state, action: PayloadAction<string>) => {
+            // console.log('Внутри диспатча удаления постов')
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id !== action.postId),
-
+                posts: state.posts.filter(p => p.id !== action.payload),
             };
-        }
-        case ADD_LIKE: {
-            console.log(action.postId)
+        },
+        addLike: (state, action: PayloadAction<String>) => {
             let stateCopy: initialStateType = {
                 ...state,
                 posts: [...state.posts]
             };
-            let post = stateCopy.posts.find(p => p.id === action.postId)
+            let post = stateCopy.posts.find(p => p.id === action.payload)
             if (!post) return stateCopy
             post.likesCount += 1;
-            return stateCopy;
+            // return stateCopy;
+        },
+        setUserProfile: (state, action: PayloadAction<profileType>) => {
+            return { ...state, profile: action.payload }
+        },
+        setUserProfileStatus: (state, action: PayloadAction<string>) => {
+            return { ...state, profileStatus: action.payload }
+        },
+        updateProfilePhoto: (state, action: PayloadAction<photosType>) => {
+            return { ...state, profile: { ...state.profile, photos: action.payload } as profileType }
         }
-        case SET_USER_PROFILE: {
-            return { ...state, profile: action.profile }
-        }
-        case SET_USER_PROFILE_STATUS: {
-            return { ...state, profileStatus: action.profileStatus }
-        }
-        case SET_USER_ABOUT_ME: {
-            return { ...state, aboutMe: action.aboutMe }
-        }
-        // case UPDATE_ABOUT_ME: {
-        //     return {
-        //         ...state, profile: {
-        //             ...state.profile, profile: action.profileAboutMe
-        //         }
-        //     }
-        // }
-        case UPDATE_PROFILE_PHOTO: {
-            return { ...state, profile: { ...state.profile, photos: action.photos } as profileType }
-        }
-        default: return state;
+
     }
+})
+export const getUserProfile = (userId: number | null) => async (dispatch: AppDispatch) => {
+    const data = await profileAPI.getUserProfile(userId)
+    dispatch(setUserProfile(data));
 }
-type addPostTextActionCreatorType = {
-    type: typeof ADD_POST
-    newPostText: string
-}
-type deletePostTextActionCreatorType = {
-    type: typeof DELETE_POST
-    postId: number
-}
-type addPostLikeActionCreatorType = {
-    type: typeof ADD_LIKE
-    postId: number
-}
-type setUserProfileType = {
-    type: typeof SET_USER_PROFILE
-    profile: profileType
-}
-type setUserProfileStatusType = {
-    type: typeof SET_USER_PROFILE_STATUS
-    profileStatus: string
-}
-type setUserAboutMeType = {
-    type: typeof SET_USER_ABOUT_ME
-    aboutMe: string
-}
-type updateProfilePhotoType = {
-    type: typeof UPDATE_PROFILE_PHOTO
-    photos: photosType
-}
-export const addPostTextActionCreator = (newPostText: string): addPostTextActionCreatorType => {
-    return { type: ADD_POST, newPostText }
-}
-export const deletePostTextActionCreator = (postId: number): deletePostTextActionCreatorType => {
-    return { type: DELETE_POST, postId }
-}
-export const addPostLikeActionCreator = (postId: number): addPostLikeActionCreatorType => {
-    return { type: ADD_LIKE, postId: postId }
+export const getUserProfileStatus = (userId: number) => async (dispatch: Dispatch<GenericDispatch<string, "profilePageSlice/setUserProfileStatus">>) => {
+    const data = await profileAPI.getUserProfileStatus(userId)
+    dispatch(setUserProfileStatus(data));
 }
 
-export const setUserProfile = (profile: profileType): setUserProfileType => {
-    return { type: SET_USER_PROFILE, profile }
-}
-export const setUserProfileStatus = (profileStatus: string): setUserProfileStatusType => {
-    return { type: SET_USER_PROFILE_STATUS, profileStatus }
-}
-export const setUserAboutMe = (aboutMe: string): setUserAboutMeType => {
-    return { type: SET_USER_ABOUT_ME, aboutMe }
-}
-// export const updateProfileAboutMee = (profileAboutMe) => {
-//     return { type: UPDATE_ABOUT_ME, profileAboutMe };
-// }
-export const updateProfilePhoto = (photos: photosType): updateProfilePhotoType => {
-    return { type: UPDATE_PROFILE_PHOTO, photos };
-}
-export const addPost = (post: string) => (dispatch: Dispatch<addPostTextActionCreatorType>) => {
-    dispatch(addPostTextActionCreator(post));
-}
-export const addLike = (likes: number) => (dispatch: Dispatch<addPostLikeActionCreatorType>) => {
-    dispatch(addPostLikeActionCreator(likes));
-}
-export const deletePost = (postId: number) => (dispatch: Dispatch<deletePostTextActionCreatorType>) => {
-    dispatch(deletePostTextActionCreator(postId));
-}
-export const getUserProfile = (userId: number) => (dispatch: Dispatch<setUserProfileType>) => {
-    profileAPI.getUserProfile(userId).then(data => {
-        dispatch(setUserProfile(data));
-    });
-}
-export const getUserProfileStatus = (userId: number) => (dispatch: Dispatch<setUserProfileStatusType>) => {
-    profileAPI.getUserProfileStatus(userId).then(data => {
-        dispatch(setUserProfileStatus(data));
-    });
-}
-export const getUserAboutMe = (userId: number) => (dispatch: Dispatch<setUserAboutMeType>) => {
-    profileAPI.getUserProfile(userId).then(data => {
-        dispatch(setUserAboutMe(data.aboutMe));
-    });
-}
-export const updateUserProfileStatus = (status: string) => (dispatch: Dispatch<setUserProfileStatusType>) => {
-    profileAPI.updateUserProfileStatus(status).then(respone => {
-        if (respone.resultCode === 0) {
-            dispatch(setUserProfileStatus(status))
-        }
-        //  else {
-        //     const errorMessage = respone.messages
-        //     if (errorMessage === 0) return
-        //     dispatch(stopSubmit())
-        // }
+export const updateUserProfileStatus = (status: string) => async (dispatch: Dispatch<GenericDispatch<string, "profilePageSlice/setUserProfileStatus">>) => {
+    const response = await profileAPI.updateUserProfileStatus(status)
+    if (response.resultCode === 0) {
+        dispatch(setUserProfileStatus(status))
     }
-    )
 }
 
-export const updateAboutMe = (profile: profileType) => async (dispatch: any, getState: any) => {
+export const updateAboutMe = (profile: profileType) => async (dispatch: AppDispatch, getState: IRootStore) => {
     const userId = getState().auth.id
     const response = await profileAPI.updateAboutMe(profile)
-
     if (response.resultCode === 0) {
         dispatch(getUserProfile(userId))
     } else {
@@ -268,13 +170,9 @@ export const updateAboutMe = (profile: profileType) => async (dispatch: any, get
                 errors[key] = errorMessage.replace(/.*/, `Invalid URL (example https://${key}.com/name)`)
             }
         })
-
         dispatch(stopSubmit('aboutMe', { 'contacts': errors }));
         return Promise.reject(errors)
-
-
     }
-
 }
 export const updateUserPhoto = (photos: File) => async (dispatch: any) => {
     const response = await profileAPI.updateUserPhoto(photos)
@@ -285,6 +183,5 @@ export const updateUserPhoto = (photos: File) => async (dispatch: any) => {
         return Promise.reject(messages)
     }
 }
-
-export default profileReducer;
-
+export const { addPost, addLike, deletePost, setUserProfile, setUserProfileStatus, updateProfilePhoto } = profilePageSlice.actions
+export default profilePageSlice.reducer

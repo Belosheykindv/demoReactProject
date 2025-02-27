@@ -32,6 +32,7 @@ const dialogsSlice = createSlice({
     initialState,
     reducers: {
         addDialogMessage: (state, action: PayloadAction<string>) => {
+            console.log('Внтури диспатчка диалогов')
             let newMessage = {
                 id: v1(),
                 message: action.payload,

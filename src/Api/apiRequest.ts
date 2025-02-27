@@ -1,4 +1,5 @@
 import axios from "axios"
+import { photosType, profileType } from "../Redux/profilePage-reducer";
 // import { subscribe } from "diagnostics_channel";
 
 const instance = axios.create({
@@ -7,12 +8,14 @@ const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
 });
 const beerInstance = axios.create({
-    // withCredentials: true,
-    // headers: { 'API-KEY': 'd79b7d16-0a4f-4534-8f76-b96d60b582a1' },
-    baseURL: 'https://api.punkapi.com/v2/beers/random',
+    baseURL: 'https://api.punkapi.com/v2/beers/',
 });
+
+type subScriberType = {
+    [key: string]: Array<string>
+}
 export const userAPI = {
-    getUsers: async (pageSize, pagesCount) => {
+    getUsers: async (pageSize: number, pagesCount: number) => {
         const response = await instance.get(`users?count=${pageSize}&page=${pagesCount}`);
         return response.data.items;
     },
@@ -20,7 +23,7 @@ export const userAPI = {
         const response = await instance.get(`users`)
         return response.data.totalCount
     },
-    getPageUsers: async (pageSize, truePage) => {
+    getPageUsers: async (pageSize: number, truePage: number) => {
         const response = await instance.get(`users?count=${pageSize}&page=${truePage}`);
         return response.data;
     }
@@ -28,12 +31,12 @@ export const userAPI = {
 }
 // API для подписки/отписки *******************************************
 export const followAPI = {
-    delete: async (userId) => {
+    delete: async (userId: number) => {
         const response = await instance.delete(`follow/${userId}`)
         return response.data;
     },
 
-    post: async (userId) => {
+    post: async (userId: number) => {
         const response = await instance.post(`follow/${userId}`)
         return response.data;
     }
@@ -44,7 +47,7 @@ export const authAPI = {
         const response = await instance.get(`auth/me`)
         return response.data
     },
-    login: async (email, password, rememberMe, captcha) => {
+    login: async (email: string, password: string, rememberMe: boolean, captcha: string) => {
         const response = await instance.post(`auth/login`, { email, password, rememberMe, captcha })
         return response.data
     },
@@ -58,15 +61,15 @@ export const authAPI = {
 }
 // API для страницы профиля*******************************************
 export const profileAPI = {
-    getUserProfile: async (userId) => {
+    getUserProfile: async (userId: number | null) => {
         const response = await instance.get(`profile/` + userId)
         return response.data
     },
-    getUserProfileStatus: async (userId) => {
+    getUserProfileStatus: async (userId: number) => {
         const response = await instance.get(`profile/status/` + userId);
         return response.data;
     },
-    updateUserProfileStatus: async (status) => {
+    updateUserProfileStatus: async (status: string) => {
         const response = await instance.put(`profile/status`, { status });
         return response.data;
     },
@@ -74,11 +77,11 @@ export const profileAPI = {
     //     const response = await instance.put(`profile`, { lookingForAJobDescription, fullName, aboutMe });
     //     return response.data;
     // },
-    updateAboutMe: async (profile) => {
+    updateAboutMe: async (profile: profileType) => {
         const response = await instance.put(`profile`, profile);
         return response.data;
     },
-    updateUserPhoto: async (photo) => {
+    updateUserPhoto: async (photo: string | Blob) => {
         const formData = new FormData();
         formData.append("image", photo);
         const response = await instance.put(`profile/photo`, formData, {
@@ -91,15 +94,15 @@ export const profileAPI = {
     }
 }
 // API для страницы чата*******************************************
-let subscribers = {
+let subscribers: subScriberType = {
     'messages-received': [],
     'status-changed': []
 }
-let ws = null
+let ws: WebSocket | null = null
 
-const setMessageHandler = (e) => {
+const setMessageHandler = (e: { data: string; }) => {
     let newMessages = JSON.parse(e.data)
-    subscribers['messages-received'].forEach(s => s(newMessages))
+    subscribers['messages-received'].forEach((s: any) => s(newMessages))
 }
 const openHandler = () => {
     notifySubscribersAaboutStatus('ready')
@@ -115,10 +118,10 @@ const errorHandler = () => {
     console.error('Refresh page (Какая-то ошибка)')
 }
 
-const notifySubscribersAaboutStatus = (status) => {
-    subscribers['status-changed'].forEach(s => s(status))
+const notifySubscribersAaboutStatus = (status: string) => {
+    subscribers['status-changed'].forEach((s: any) => s(status))
 }
-const cleanUp = (ws) => {
+const cleanUp = (ws?: WebSocket) => {
     ws?.removeEventListener('close', closeHandler)
     ws?.removeEventListener('message', setMessageHandler)
     ws?.removeEventListener('open', openHandler)
@@ -145,28 +148,27 @@ export const chatAPI = {
         subscribers['messages-received'] = []
         subscribers['status-changed'] = []
         cleanUp()
-        ws.close()
+        ws?.close()
         console.log('Channel is closed')
 
     },
-    subscribe: (eventName, callback) => {
+    subscribe: (eventName: string, callback: any) => {
         subscribers[eventName].push(callback)
         return () => {
-            subscribers[eventName] = subscribers[eventName].filter(s => s !== callback)
+            subscribers[eventName] = subscribers[eventName].filter((s: any) => s !== callback)
         }
     },
-    unsubscribe: (eventName, callback) => {
-        subscribers[eventName] = subscribers[eventName].filter(s => s !== callback)
+    unsubscribe: (eventName: string, callback: any) => {
+        subscribers[eventName] = subscribers[eventName].filter((s: any) => s !== callback)
     },
-    sendMessage: (message) => {
+    sendMessage: (message: string) => {
         ws?.send(message)
     }
 }
 
 export const beerAPI = {
     getBeer: async () => {
-        const response = await beerInstance.get()
-        console.log(response.data)
+        const response = await beerInstance.get('random')
         return response.data
     }
 }
