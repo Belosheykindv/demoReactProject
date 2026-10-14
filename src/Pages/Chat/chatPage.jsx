@@ -15,6 +15,7 @@ import style from './/..//../Components/Dialogs/Dialogs.module.css'
 import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
 import { compose } from 'redux'
 import userPhoto from './/..//..//Images/userPhoto.png'
+
 const ChatPage = () => {
   return (
     <div>
@@ -41,6 +42,7 @@ const Chat = () => {
     </div>
   )
 }
+
 const Messages = () => {
   const messages = useSelector((state) => state.chat.messages)
   return (
@@ -51,6 +53,7 @@ const Messages = () => {
     </div>
   )
 }
+
 const Message = React.memo(({ message }) => {
   console.log('Отрисовка Сообщений')
   const {
@@ -98,6 +101,7 @@ const Message = React.memo(({ message }) => {
     </div>
   )
 })
+
 const AddMessageForm = () => {
   const [message, setMessage] = useState()
   const dispatch = useDispatch()
