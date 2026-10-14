@@ -58,9 +58,10 @@ const Music = React.memo((props: MusicProps) => {
     sec: 0,
   })
 
-  const sec = duration ?? 0 / 1000
+  const sec = duration ? duration / 1000 : 0
   const min = Math.floor(sec / 60)
   const secRemain = Math.floor(sec % 60)
+
   const time = {
     min: min,
     sec: secRemain,
@@ -79,11 +80,17 @@ const Music = React.memo((props: MusicProps) => {
           min,
           sec,
         })
+
+        if (sound.seek([]) === 0) {
+          setIsPlaying(false)
+        }
       }
     }, 1000)
+
     return () => {
       clearInterval(interval)
       stop()
+      setIsPlaying(false)
       console.log('UNMOUNTED')
     }
   }, [sound, stop])
@@ -134,7 +141,7 @@ const Music = React.memo((props: MusicProps) => {
                 value={seconds || 0}
                 step="1"
                 min="0"
-                max={duration ?? 0 / 1000}
+                max={duration ? duration / 1000 : 0}
                 className="progress"
                 onChange={(e) => {
                   sound.seek([e.target.value])
