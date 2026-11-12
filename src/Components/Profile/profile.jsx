@@ -1,25 +1,23 @@
-;
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-import MyPostsContainer from './MyPosts/MyPostsContainer';
+import MyPostsContainer from './MyPosts/MyPostsContainer'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 const Profile = (props) => {
-
-  return <div>
-    <ProfileInfo
-      profile={props.profile}
-      userId={props.userId}
-      ownerId={props.ownerId}
-      userStatus={props.userStatus}
-      updateAboutMe={props.updateAboutMe}
-      savePhoto={props.savePhoto}
-      updateUserPhoto={props.updateUserPhoto}
-      editModeAboutMe={props.editModeAboutMe}
-      key={props.key}
-    />
-    <MyPostsContainer />
-
-  </div>
-
+  return (
+    <div>
+      <ProfileInfo
+        profile={props.profile}
+        userId={props.userId}
+        ownerId={props.ownerId}
+        userStatus={props.userStatus}
+        updateAboutMe={props.updateAboutMe}
+        savePhoto={props.savePhoto}
+        updateUserPhoto={props.updateUserPhoto}
+        editModeAboutMe={props.editModeAboutMe}
+        key={props.key}
+      />
+      <MyPostsContainer />
+    </div>
+  )
 }
 
-export default Profile;
+export default Profile

@@ -1,4 +1,3 @@
-
 import { Flex, Spin } from 'antd'
 
 const Preloader = () => {

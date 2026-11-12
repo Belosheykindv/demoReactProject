@@ -1,32 +1,32 @@
-import { combineReducers, legacy_createStore as createStore } from "redux";
-import { applyMiddleware } from "redux";
-import { composeWithDevTools } from 'redux-devtools-extension';
-import profileReducer from "./profilePage-reducer";
-import dialogsReducer from "./dialogPage-reducer";
-import usersReducer from "./users-reducer";
-import authReducer from "./authReducer";
-import chatReducer from "./chatReducer";
-import hookFormReducer from "./hookFormReducer"
+import appReducer from './appReducer'
+import authReducer from './authReducer'
+import chatReducer from './chatReducer'
+import dialogsReducer from './dialogPage-reducer'
+import hookFormReducer from './hookFormReducer'
+import profileReducer from './profilePage-reducer'
 import settingPageReducer from './settingPageReducer'
-import thunkMiddleware from 'redux-thunk'
+import todoReducer from './todoReducer'
+import usersReducer from './users-reducer'
+import { applyMiddleware, combineReducers, legacy_createStore as createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { reducer as formReducer } from 'redux-form'
-import appReducer from "./appReducer";
-import todoReducer from "./todoReducer";
+import thunkMiddleware from 'redux-thunk'
+
 export type IRootStore = typeof store.getState
 export type AppDispatch = typeof store.dispatch
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
-let reducers = combineReducers({
-    profilePage: profileReducer,
-    dialogsPage: dialogsReducer,
-    usersPage: usersReducer,
-    auth: authReducer,
-    form: formReducer,
-    app: appReducer,
-    chat: chatReducer,
-    settings: settingPageReducer,
-    todo: todoReducer,
-    hookForm: hookFormReducer
-});
-let store = createStore(reducers, composedEnhancer);
-// window.store = store;
-export default store;
+const reducers = combineReducers({
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  usersPage: usersReducer,
+  auth: authReducer,
+  form: formReducer,
+  app: appReducer,
+  chat: chatReducer,
+  settings: settingPageReducer,
+  todo: todoReducer,
+  hookForm: hookFormReducer,
+})
+const store = createStore(reducers, composedEnhancer)
+
+export default store

@@ -18,7 +18,7 @@
   }
 
   input {
-    width: 240px
+    width: 240px;
   }
 
   .photoBlock {
@@ -27,8 +27,8 @@
     flex-direction: column;
     margin-right: 10px;
   }
-  .infoBlock{
-    flex: 2
+  .infoBlock {
+    flex: 2;
   }
 }
 
@@ -40,7 +40,6 @@
   padding-left: 10px;
   display: flex;
   position: relative;
-
 }
 
 .key {
@@ -60,7 +59,6 @@
   align-items: flex-start;
 }
 
-
 .hideUnput {
   opacity: 0;
   width: 0%;
@@ -68,5 +66,5 @@
 }
 
 label {
-  cursor: pointer
+  cursor: pointer;
 }
