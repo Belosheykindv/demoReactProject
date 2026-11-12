@@ -1,5 +1,5 @@
 import { type } from '@testing-library/user-event/dist/type';
-import React from 'react';
+;
 import P from './MyPosts.module.css';
 import Post from './Post/Post';
 import { Field, reduxForm } from 'redux-form';

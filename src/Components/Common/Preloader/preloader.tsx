@@ -1,10 +1,10 @@
-import React from 'react'
+
 import { Flex, Spin } from 'antd'
 
-let Preloader = () => {
+const Preloader = () => {
   return (
-    <Flex align="center" gap="middle">
-      <Spin size="large" />
+    <Flex align='center' gap='middle'>
+      <Spin size='large' />
     </Flex>
   )
 }

@@ -1,10 +1,12 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { FormCreate } from '../Common/FormControls/formControls'
-import { maxLengthCreator, required } from '../../Utils/Validators/validators'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { connect } from 'react-redux'
-import { login } from '../../Redux/authReducer'
 import { Navigate } from 'react-router-dom'
+import { Field, reduxForm } from 'redux-form'
+
+import { login } from '../../Redux/authReducer'
+import { maxLengthCreator, required } from '../../Utils/Validators/validators'
+import { FormCreate } from '../Common/FormControls/formControls'
 import styles from '../Common/FormControls/formControls.module.css'
 
 const maxLength25 = maxLengthCreator(25)
@@ -46,9 +48,7 @@ const LoginForm = (props: any) => {
           />{' '}
           Remember me
         </div>
-        {props.error && (
-          <div className={styles.formSummaryError}> {props.error} </div>
-        )}
+        {props.error && <div className={styles.formSummaryError}> {props.error} </div>}
         <div>
           {' '}
           <button>Login</button>

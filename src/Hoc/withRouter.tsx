@@ -1,10 +1,11 @@
-import React from 'react'
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+
 export function withRouter(Component: any) {
   function ComponentWithRouterProp(props: any) {
-    let location = useLocation()
-    let navigate = useNavigate()
-    let params = useParams()
+    const location = useLocation()
+    const navigate = useNavigate()
+    const params = useParams()
     return <Component {...props} router={{ location, navigate, params }} />
   }
   return ComponentWithRouterProp

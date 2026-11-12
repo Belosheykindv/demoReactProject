@@ -1,20 +1,16 @@
-import React from 'react'
-import { Form, Field } from 'react-final-form'
-import { FormCreate } from '../Common/FormControls/formControls'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { Field, Form } from 'react-final-form'
 import { connect } from 'react-redux'
-import { login } from '../../Redux/authReducer'
 import { Navigate } from 'react-router-dom'
-import styles from '../Common/FormControls/formControls.module.css'
-import Input from 'antd/es/input/Input'
 import S from './login.module.css'
 
-const Fields = ({
-  names,
-  subscription,
-  fieldsState = {},
-  children,
-  originalRender,
-}: any) => {
+import { login } from '../../Redux/authReducer'
+import { FormCreate } from '../Common/FormControls/formControls'
+import styles from '../Common/FormControls/formControls.module.css'
+import Input from 'antd/es/input/Input'
+
+const Fields = ({ names, subscription, fieldsState = {}, children, originalRender }: any) => {
   if (!names.length) {
     return (originalRender || children)(fieldsState)
   }
@@ -34,12 +30,7 @@ const Fields = ({
 }
 const Login2 = (props: any) => {
   const onSubmit = (values: any) => {
-    props.login(
-      values.email,
-      values.password,
-      values.rememberMe,
-      values.captcha,
-    )
+    props.login(values.email, values.password, values.rememberMe, values.captcha)
     values.captcha = ''
   }
   if (props.isAuth) {
@@ -61,7 +52,7 @@ const Login2 = (props: any) => {
           }
           return errors
         }}
-        render={({ handleSubmit, form, submitting, pristine, values }) => (
+        render={({ handleSubmit, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
             <div>
               {' '}
@@ -78,7 +69,7 @@ const Login2 = (props: any) => {
                 name={'password'}
                 type={'password'}
                 fieldType={Input}
-                autoComplete="on"
+                autoComplete='on'
                 placeholder={'Password'}
                 component={FormCreate}
               />{' '}
@@ -90,7 +81,7 @@ const Login2 = (props: any) => {
                 <Field
                   name={'captcha'}
                   fieldType={Input}
-                  autoComplete="on"
+                  autoComplete='on'
                   component={FormCreate}
                 />{' '}
               </div>
@@ -105,16 +96,10 @@ const Login2 = (props: any) => {
               />{' '}
               Remember me
             </div>
-            {props.error && (
-              <div className={styles.formSummaryError}> {props.error} </div>
-            )}
+            {props.error && <div className={styles.formSummaryError}> {props.error} </div>}
             <div>
               {' '}
-              <button
-                className={S.btn}
-                type={'submit'}
-                disabled={submitting || pristine}
-              >
+              <button className={S.btn} type={'submit'} disabled={submitting || pristine}>
                 Войти
               </button>{' '}
             </div>

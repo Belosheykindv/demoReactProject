@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
@@ -7,7 +9,7 @@ type RedirectComponentProps = {
   [key: string]: any
 }
 
-let mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: any) => ({
   auth: state.auth.isAuth,
 })
 
@@ -19,6 +21,7 @@ export const withAuthRedirect = (Component: any) => {
     }
   }
 
-  let connectedRedirectComponent = connect(mapStateToProps)(RedirectComponent)
+  const connectedRedirectComponent = connect(mapStateToProps)(RedirectComponent)
+
   return connectedRedirectComponent
 }

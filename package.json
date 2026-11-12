@@ -15,8 +15,6 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/redux-form": "^8.3.10",
-    "@typescript-eslint/eslint-plugin": "^6.19.1",
-    "@typescript-eslint/parser": "^6.19.1",
     "antd": "^5.12.7",
     "axios": "^1.3.3",
     "final-form": "^4.20.10",
@@ -46,6 +44,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src/**/*.{ts,tsx} --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prettier": "prettier --write types/ src/ public/ index.html vite.config.ts",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -68,12 +67,19 @@
     ]
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "gh-pages": "^6.1.1",
+    "prettier": "^3.10.1",
     "prop-types": "15.8.1",
     "react-test-renderer": "17.0.2",
     "sass": "^1.69.6",
-    "@vitejs/plugin-react": "^4.3.4",
     "vite": "^5.4.11"
   }
 }

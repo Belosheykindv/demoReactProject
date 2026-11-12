@@ -1,19 +1,20 @@
-import React from 'react'
-import styles from './formControls.module.css'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createElement } from 'react'
 import { Field } from 'react-final-form'
+import styles from './formControls.module.css'
 
 export const FormCreate = ({ input, meta, fieldType, ...props }: any) => {
   const hasError = meta.touched && meta.error
   return (
     <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
-      <div>{React.createElement(fieldType, { ...input, ...props })}</div>
+      <div>{createElement(fieldType, { ...input, ...props })}</div>
       {hasError && <span>{meta.error}</span>}
     </div>
   )
 }
 
 export const Textarea = (props: any) => {
-  const { input, meta, child, ...restProps } = props
+  const { input, ...restProps } = props
   return (
     <FormCreate {...props}>
       <textarea {...input} {...restProps} />{' '}
@@ -21,7 +22,7 @@ export const Textarea = (props: any) => {
   )
 }
 export const CustopmInput = (props: any) => {
-  const { input, meta, child, ...restProps } = props
+  const { input, ...restProps } = props
   return (
     <FormCreate {...props}>
       {' '}
