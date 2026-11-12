@@ -1,17 +1,17 @@
-import React from "react";
-import { ReactComponent as Play } from "./assets/play.svg";
-import { ReactComponent as Pause } from "./assets/pause.svg";
-import { ReactComponent as Next } from "./assets/next.svg";
-import { ReactComponent as Prev } from "./assets/prev.svg";
+import React from 'react'
+import { default as Play } from './assets/play.svg'
+import { default as Pause } from './assets/pause.svg'
+import { default as Next } from './assets/next.svg'
+import { default as Prev } from './assets/prev.svg'
 
-import "./Music.scss";
+import './Music.scss'
 
 type AudioControlsProps = {
-  isPlaying: boolean;
-  onPlayPauseClick: (val?: boolean) => void;
-  onPrevClick: () => void;
-  onNextClick: () => void;
-};
+  isPlaying: boolean
+  onPlayPauseClick: (val?: boolean) => void
+  onPrevClick: () => void
+  onNextClick: () => void
+}
 
 const AudioControls = ({
   isPlaying,
@@ -58,6 +58,6 @@ const AudioControls = ({
       <Next />
     </button>
   </div>
-);
+)
 
-export default AudioControls;
+export default AudioControls

@@ -26,15 +26,11 @@ import { useEffect, useState } from 'react'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  // UploadOutlined,
   UserOutlined,
-  // VideoCameraOutlined,
 } from '@ant-design/icons'
 import { Layout, Menu, Button, theme } from 'antd'
 import { Footer } from 'antd/es/layout/layout'
 import HookForm from './Components/HookFrom/hookForm'
-
-// import { ChatPage } from './Pages/Chat/chatPage';
 
 const { Header, Sider, Content } = Layout
 const ProfileContainer = React.lazy(
@@ -49,7 +45,7 @@ const UsersContainer = React.lazy(
 const ChatPage = React.lazy(() => import('./Pages/Chat/chatPage'))
 // const MusicContainer = React.lazy(() => import('./Components/Music/Music'))
 
-const App = (props) => {
+const App = (props: any) => {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -171,7 +167,7 @@ const App = (props) => {
       </Layout>
     )
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   initialize: state.app.initialize,
   ownerId: state.auth.id,
   isAuth: state.auth.isAuth,
@@ -180,7 +176,7 @@ let AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializedApp, logout }),
 )(App)
-const SamuraiJSAPP = (props) => {
+const SamuraiJSAPP = () => {
   return (
     <Provider store={store}>
       <HashRouter>
