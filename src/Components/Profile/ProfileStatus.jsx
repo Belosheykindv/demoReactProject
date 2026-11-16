@@ -98,4 +98,4 @@ const ProfileFuncStatus = (props) => {
     </div>
   )
 }
-export default ProfileFuncStatus
+export const ProfileStatusComponent = ProfileFuncStatus

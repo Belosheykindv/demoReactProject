@@ -133,4 +133,4 @@ const HookForm = () => {
     </div>
   )
 }
-export default compose(withAuthRedirect)(HookForm)
+export const HookFormComponent = compose(withAuthRedirect)(HookForm)

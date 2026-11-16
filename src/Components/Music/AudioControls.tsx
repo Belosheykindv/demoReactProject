@@ -44,4 +44,4 @@ const AudioControls = ({
   </div>
 )
 
-export default AudioControls
+export const AudioControlsComponent = AudioControls

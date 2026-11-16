@@ -7,4 +7,4 @@ const Preloader = () => {
     </Flex>
   )
 }
-export default Preloader
+export const PreloaderComponent = Preloader

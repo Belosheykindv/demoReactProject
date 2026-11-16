@@ -6,15 +6,14 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined } from '@ant-design/
 import { Button, Layout, Menu, theme } from 'antd'
 import { compose } from 'redux'
 
-import Preloader from '../Components/Common/Preloader/preloader'
-import HookForm from '../Components/HookFrom/hookForm'
-import Login from '../Components/Login/login'
-import Login2 from '../Components/Login/loginRFF'
-import MusicContainer from '../Components/Music/Music'
+import { PreloaderComponent } from '../Components/Common/Preloader/preloader'
+import { HookFormComponent } from '../Components/HookFrom/hookForm'
+import { LoginComponent } from '../Components/Login/login'
+import { LoginRFFComponent } from '../Components/Login/loginRFF'
+import { MusicComponent } from '../Components/Music/Music'
+import { SettingsComponent } from '../Components/Settings/Settings'
 // @ts-expect-error Settings is a JavaScript component without a declaration file.
-import BeerComp from '../Components/Settings/Settings'
-// @ts-expect-error Settings is a JavaScript component without a declaration file.
-import ToDO from '../Components/ToDO/todo'
+import { TodoComponent } from '../Components/ToDO/todo'
 import { withRouter } from '../Hoc/withRouter'
 import { initializedApp } from '../Redux/appReducer'
 import { logout } from '../Redux/authReducer'
@@ -25,13 +24,12 @@ import './app.scss'
 
 const { Header, Sider, Content } = Layout
 // @ts-expect-error Settings is a JavaScript component without a declaration file.
-const ProfileContainer = React.lazy(() => import('../Components/Profile/profileContainer'))
+const ProfileContainer = React.lazy(() => import('../Components/Profile/profileContainer').then((module) => ({ default: module.ProfileContainerComponent })))
 // @ts-expect-error Settings is a JavaScript component without a declaration file.
-const DialogsContainer = React.lazy(() => import('../Components/Dialogs/Dialogs-container'))
+const DialogsContainer = React.lazy(() => import('../Components/Dialogs/Dialogs-container').then((module) => ({ default: module.DialogsContainerComponent })))
 // @ts-expect-error Settings is a JavaScript component without a declaration file.
-const UsersContainer = React.lazy(() => import('../Components/Users/usersContainer'))
-// @ts-expect-error Settings is a JavaScript component without a declaration file.
-const ChatPage = React.lazy(() => import('../Pages/Chat/chatPage'))
+const UsersContainer = React.lazy(() => import('../Components/Users/usersContainer').then((module) => ({ default: module.UsersContainerComponent })))
+const ChatPage = React.lazy(() => import('../Pages/Chat/chatPage').then((module) => ({ default: module.ChatPageComponent })))
 
 const App = (props: any) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -42,7 +40,7 @@ const App = (props: any) => {
     props.initializedApp()
   }, [])
   if (!props.store.app.initialize) {
-    return <Preloader />
+    return <PreloaderComponent />
   } else
     return (
       <Layout className={`${collapsed ? 'app-wrapper-on' : 'app-wrapper-off'}`}>
@@ -137,14 +135,14 @@ const App = (props: any) => {
                 <Route path=':userId' element={<ProfileContainer />} />
               </Route>
               <Route path='chat' element={<ChatPage />} />
-              <Route path='/music' element={<MusicContainer />} />
-              <Route path='/settings' element={<BeerComp />} />
+              <Route path='/music' element={<MusicComponent />} />
+              <Route path='/settings' element={<SettingsComponent />} />
               <Route path='/users' element={<UsersContainer />} />
-              <Route path='/todo' element={<ToDO />} />
-              <Route path='/login' element={<Login2 />} />
-              <Route path='/login2' element={<Login />} />
-              <Route path='/hookForm' element={<HookForm />} />
-              <Route path='/' element={<Login2 />} />
+              <Route path='/todo' element={<TodoComponent />} />
+              <Route path='/login' element={<LoginRFFComponent />} />
+              <Route path='/login2' element={<LoginComponent />} />
+              <Route path='/hookForm' element={<HookFormComponent />} />
+              <Route path='/' element={<LoginRFFComponent />} />
             </Routes>
           </Content>
           <Footer style={{ textAlign: 'center', fontSize: 30 }}>
@@ -167,7 +165,7 @@ export const SamuraiJSAPP = () => {
   return (
     <Provider store={store}>
       <HashRouter>
-        <Suspense fallback={<Preloader />}>
+        <Suspense fallback={<PreloaderComponent />}>
           <AppContainer store={store.getState()} dispatch={store.dispatch.bind(store)} />
         </Suspense>
       </HashRouter>

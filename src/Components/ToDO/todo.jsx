@@ -107,7 +107,7 @@ const ToDolist = (props) => {
 const mapStateToProps = (state) => ({
   toDos: state.todo.toDos,
 })
-export default compose(
+export const TodoComponent = compose(
   connect(mapStateToProps, { addNewTodo, delNewTodo, checkTodo }),
   withRouter,
   withAuthRedirect,

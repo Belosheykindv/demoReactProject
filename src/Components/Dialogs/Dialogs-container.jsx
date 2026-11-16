@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Dialogs from './DialogsC'
+import { DialogsComponent } from './DialogsC'
 import { compose } from 'redux'
 
 import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
@@ -10,4 +10,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default compose(connect(mapStateToProps, {}), withAuthRedirect)(Dialogs)
+export const DialogsContainerComponent = compose(connect(mapStateToProps, {}), withAuthRedirect)(DialogsComponent)

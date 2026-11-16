@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 // @ts-expect-error ProfileStatus is a legacy JavaScript component without declarations.
-import ProfileFuncStatus from '../ProfileStatus'
+import { ProfileStatusComponent } from '../ProfileStatus'
 import { Field, reduxForm } from 'redux-form'
 
 import { maxLengthCreator, required } from '../../../Utils/Validators/validators'
@@ -79,7 +79,7 @@ const Profile = ({
         </button>
       )}
       <div>
-        <ProfileFuncStatus />
+        <ProfileStatusComponent />
       </div>
       <div>
         <b>Кто я - </b>

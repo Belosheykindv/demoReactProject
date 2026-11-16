@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import MyPosts from './MyPosts'
+import { MyPostsComponent } from './MyPosts'
 import { compose } from 'redux'
 
 import { withAuthRedirect } from '../../../Hoc/withAuthRedirect'
@@ -18,4 +18,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default compose(connect(mapStateToProps, {}), withRouter, withAuthRedirect)(MyPosts)
+export const MyPostsContainerComponent = compose(connect(mapStateToProps, {}), withRouter, withAuthRedirect)(MyPostsComponent)

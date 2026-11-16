@@ -10,9 +10,8 @@ import { addDialogMessage } from '../../Redux/dialogPage-reducer'
 import { IRootStore } from '../../Redux/reduxStore'
 import { maxLength100, required } from '../../Utils/Validators/validators'
 // @ts-expect-error DialogItem is a legacy JSX module without a declaration file.
-import DialogItem from './DialogItem/DialogItem'
-// @ts-expect-error DialogItem is a legacy JSX module without a declaration file.
-import Message from './Message/Message'
+import { DialogItemComponent } from './DialogItem/DialogItem'
+import { MessageComponent } from './Message/Message'
 
 const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
   const dispatch = useDispatch()
@@ -38,7 +37,7 @@ const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
     } else setButtonStatus(true)
   }
   const dialogElements = dialogs.map((d) => (
-    <DialogItem
+    <DialogItemComponent
       ingridients={props.dialogsPage.dialogs}
       name={d.name}
       id={d.id}
@@ -46,7 +45,7 @@ const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
       key={d.id}
     />
   ))
-  const messageElement = messages.map((m) => <Message message={m.message} key={m.id} />)
+  const messageElement = messages.map((m) => <MessageComponent message={m.message} key={m.id} />)
   if (props.auth === false) return <Navigate to={'/login'} />
   return (
     <nav className={s.dialogs}>
@@ -83,4 +82,4 @@ const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
   )
 }
 
-export default Dialogs
+export const DialogsComponent = Dialogs

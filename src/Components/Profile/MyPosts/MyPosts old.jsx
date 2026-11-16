@@ -4,13 +4,13 @@ import { Field, reduxForm } from 'redux-form'
 
 import { maxLengthCreator, required } from '../../../Utils/Validators/validators'
 import { FormCreate, TextArea } from '../../Common/FormControls/formControls'
-import Post from './Post/Post'
+import { PostComponent } from './Post/Post'
 import { type } from '@testing-library/user-event/dist/type'
 
 const MyPosts = (props) => {
   let state = props.profilePage
   let postsElements = state.posts.map((p) => (
-    <Post
+    <PostComponent
       postId={p.id}
       message={p.message}
       likesCount={p.likesCount}
@@ -57,4 +57,4 @@ const AddNewPostForm = (props) => {
   )
 }
 const AddNewPostFormRedux = reduxForm({ form: 'profileAddMessageForm' })(AddNewPostForm)
-export default MyPosts
+export const MyPostsLegacyComponent = MyPosts

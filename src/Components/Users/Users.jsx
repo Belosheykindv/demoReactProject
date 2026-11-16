@@ -99,4 +99,4 @@ const Users = (props) => {
   )
 }
 
-export default Users
+export const UsersComponent = Users

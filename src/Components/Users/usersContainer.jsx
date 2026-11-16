@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import Users from './Users'
+import { UsersComponent } from './Users'
 import { compose } from 'redux'
 
 import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
@@ -17,7 +17,7 @@ import {
   toggleIsFetching,
   unfollow,
 } from '../../Redux/users-reducer'
-import Preloader from '../Common/Preloader/preloader'
+import { PreloaderComponent } from '../Common/Preloader/preloader'
 
 const UsersApiContainer = (props) => {
   useEffect(() => {
@@ -36,8 +36,8 @@ const UsersApiContainer = (props) => {
   if (props.auth === false) return <Navigate to={'/login'} />
   return (
     <>
-      {props.isFetching ? <Preloader /> : null}
-      <Users
+      {props.isFetching ? <PreloaderComponent /> : null}
+      <UsersComponent
         onPageChanged={onPageChanged}
         pageSize={props.pageSize}
         totalUsersCount={props.totalUsersCount}
@@ -95,7 +95,7 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default compose(
+export const UsersContainerComponent = compose(
   connect(mapStateToProps, {
     getUsers,
     getPageUsers,

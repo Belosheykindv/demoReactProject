@@ -1,7 +1,7 @@
 import { Navigate, NavLink } from 'react-router-dom'
 import N from './Navbar.module.css'
 
-import DialogItem from '../Dialogs/DialogItem/DialogItem'
+import { DialogItemComponent } from '../Dialogs/DialogItem/DialogItem'
 
 const Navbar = (props) => {
   // let userElements = props.users.map(p => <DialogItem userId={p.id} imgSrc={p.imgSrc} name={p.name} key={p.id} />);
@@ -61,4 +61,4 @@ const Navbar = (props) => {
     </nav>
   )
 }
-export default Navbar
+export const NavbarComponent = Navbar

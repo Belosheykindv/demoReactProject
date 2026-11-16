@@ -118,4 +118,4 @@ const mapStateToProps = (state: any) => ({
   loginError: state.auth.error,
   captcha: state.auth.captchaUrl,
 })
-export default connect(mapStateToProps, { login })(Login2)
+export const LoginRFFComponent = connect(mapStateToProps, { login })(Login2)

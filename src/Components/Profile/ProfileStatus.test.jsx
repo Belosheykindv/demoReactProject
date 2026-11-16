@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { act, create } from 'react-test-renderer'
-import ProfileFuncStatus from './ProfileStatus'
+import { ProfileStatusComponent } from './ProfileStatus'
 
 // const ProfileFuncStatus = (props) => {
 //     const [editMode, setEditMode] = useState(false)

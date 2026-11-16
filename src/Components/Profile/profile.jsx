@@ -1,10 +1,10 @@
-import MyPostsContainer from './MyPosts/MyPostsContainer'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
+import { MyPostsContainerComponent } from './MyPosts/MyPostsContainer'
+import { ProfileInfoComponent } from './ProfileInfo/ProfileInfo'
 
 const Profile = (props) => {
   return (
     <div>
-      <ProfileInfo
+      <ProfileInfoComponent
         profile={props.profile}
         userId={props.userId}
         ownerId={props.ownerId}
@@ -15,9 +15,9 @@ const Profile = (props) => {
         editModeAboutMe={props.editModeAboutMe}
         key={props.key}
       />
-      <MyPostsContainer />
+      <MyPostsContainerComponent />
     </div>
   )
 }
 
-export default Profile
+export const ProfileComponent = Profile

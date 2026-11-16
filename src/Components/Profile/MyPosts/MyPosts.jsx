@@ -4,7 +4,7 @@ import P from './MyPosts.module.css'
 import { Form as AntDForm, Button, Input } from 'antd'
 
 import { addPost } from '../../../Redux/profilePage-reducer'
-import Post from './Post/Post'
+import { PostComponent } from './Post/Post'
 
 // const maxLength60 = maxLengthCreator(60);
 
@@ -34,7 +34,7 @@ const MyPosts = (props) => {
   }
   let state = props.profilePage
   let postsElements = state.posts.map((p) => (
-    <Post
+    <PostComponent
       postId={p.id}
       message={p.message}
       likesCount={p.likesCount}
@@ -83,4 +83,4 @@ const MyPosts = (props) => {
   )
 }
 
-export default MyPosts
+export const MyPostsComponent = MyPosts

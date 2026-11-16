@@ -7,4 +7,4 @@ const Message = (props: { message: string }) => {
     </div>
   )
 }
-export default Message
+export const MessageComponent = Message

@@ -14,8 +14,8 @@ import {
   stopStatusListening,
   unmountChat,
 } from '../../Redux/chatReducer'
-import userPhoto from './/..//..//Images/userPhoto.png'
-import style from './/..//../Components/Dialogs/Dialogs.module.css'
+import userPhoto from '../../Images/userPhoto.png'
+import style from '../../Components/Dialogs/Dialogs.module.css'
 
 const ChatPage = () => {
   return (
@@ -155,4 +155,4 @@ const AddMessageForm = () => {
   )
 }
 // export default ChatPage;
-export default compose(withAuthRedirect)(ChatPage)
+export const ChatPageComponent = compose(withAuthRedirect)(ChatPage)

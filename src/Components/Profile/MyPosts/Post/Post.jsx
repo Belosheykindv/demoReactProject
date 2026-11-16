@@ -45,4 +45,4 @@ const Post = React.memo((props) => {
     </div>
   )
 })
-export default Post
+export const PostComponent = Post

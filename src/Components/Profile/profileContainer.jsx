@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import Profile from './profile'
+import { ProfileComponent } from './profile'
 import { compose } from 'redux'
 
 import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
@@ -75,7 +75,7 @@ const ProfileContainer = (props) => {
   }, [props.router.params.userId])
   return (
     <div>
-      <Profile
+      <ProfileComponent
         {...props}
         profile={props.profile}
         userId={props.router.params.userId}
@@ -99,7 +99,7 @@ let matStateToProps = (state) => ({
   // aboutMe: state.profilePage.aboutMe,
   // lookingForAJobDescription: state.profilePage.lookingForAJobDescription
 })
-export default compose(
+export const ProfileContainerComponent = compose(
   connect(matStateToProps, {
     getUserProfile,
     getUserProfileStatus,

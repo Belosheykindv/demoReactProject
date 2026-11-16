@@ -5,9 +5,8 @@ import { compose } from 'redux'
 import { v1 } from 'uuid'
 
 import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
-// @ts-expect-error The JavaScript reducer does not have a declaration file.
 import { getRandomBeer } from '../../Redux/settingPageReducer'
-import anonymBeer from '..//../Images/anonymBeer.png'
+import anonymBeer from '../../Images/anonymBeer.png'
 
 import './Setting.css'
 
@@ -94,4 +93,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default compose(connect(mapStateToProps, { getRandomBeer }), withAuthRedirect)(BeerComp)
+export const SettingsComponent = compose(connect(mapStateToProps, { getRandomBeer }), withAuthRedirect)(BeerComp)

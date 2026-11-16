@@ -86,4 +86,4 @@ const DialogItem = (props) => {
     </div>
   )
 }
-export default DialogItem
+export const DialogItemComponent = DialogItem

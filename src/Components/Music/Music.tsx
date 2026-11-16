@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import AudioControls from './AudioControls'
+import { AudioControlsComponent } from './AudioControls'
 import tracks from './Music.data'
 import useSound from 'use-sound' //для работы со звуком
 
@@ -121,7 +121,7 @@ const Music = React.memo((props: MusicProps) => {
 
           {!isloading && (
             <>
-              <AudioControls
+              <AudioControlsComponent
                 isPlaying={isPlaying}
                 onPrevClick={toPrevTrack}
                 onNextClick={toNextTrack}
@@ -160,4 +160,4 @@ const Music = React.memo((props: MusicProps) => {
 
 const MusicContainer = withAuthRedirect(Music)
 
-export default MusicContainer
+export const MusicComponent = MusicContainer

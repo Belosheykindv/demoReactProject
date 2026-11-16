@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ProfileAboutMe } from './ProfileAboutMe'
 
 import Anonym from '../../../Images/userPhoto.png'
-import Preloader from '../../Common/Preloader/preloader'
+import { PreloaderComponent } from '../../Common/Preloader/preloader'
 
 import P from './ProfileInfo.module.scss'
 
@@ -12,7 +12,7 @@ const ProfileInfo = React.memo((props) => {
   const [isError, setError] = useState(false)
   const [isVisible, setIsvidible] = useState(false)
   if (!props.profile) {
-    return <Preloader />
+    return <PreloaderComponent />
   }
   const onChange = (e) => {
     if (e.target.files[0].size >= 4000000) return setError(true)
@@ -55,4 +55,4 @@ const ProfileInfo = React.memo((props) => {
   )
 })
 
-export default ProfileInfo
+export const ProfileInfoComponent = ProfileInfo
