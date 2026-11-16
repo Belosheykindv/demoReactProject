@@ -6,7 +6,7 @@ import { IRootStore } from '@redux/reduxStore'
 import { Button, Input } from 'antd'
 import { compose } from 'redux'
 
-import S from '@components/HookFrom/hookForm.module.css'
+import './hookForm.scss'
 
 const HookForm = () => {
   const {
@@ -24,11 +24,11 @@ const HookForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={S.inputBlock}>
-          <div className={S.elem}>
-            <div className={S.elemFieldName}>Имя</div>
-            <div className={S.elemField}>
-              <div className={S.errorField}>
+        <div className='inputBlock'>
+          <div className='elem'>
+            <div className='elemFieldName'>Имя</div>
+            <div className='elemField'>
+              <div className='errorField'>
                 {errors.firstName?.type === 'pattern' && <p role='alert'> (Без цифр пожалуйста)</p>}
                 {errors.firstName?.type === 'maxLength' && (
                   <p role='alert'>Не больше 20-и символов</p>
@@ -45,12 +45,12 @@ const HookForm = () => {
                 />
               </div>
             </div>
-            <div className={S.elemOutput}>{aboutInfo.firstName}</div>
+            <div className='elemOutput'>{aboutInfo.firstName}</div>
           </div>
-          <div className={S.elem}>
-            <div className={S.elemFieldName}>Фамилия</div>
-            <div className={S.elemField}>
-              <div className={S.errorField}>
+          <div className='elem'>
+            <div className='elemFieldName'>Фамилия</div>
+            <div className='elemField'>
+              <div className='errorField'>
                 {errors.lastName?.type === 'required' && <p role='alert'>(Введите фамилию)</p>}
                 {errors.lastName?.type === 'pattern' && <p role='alert'>(Без цифр пожалуйста)</p>}
                 {errors.lastName?.type === 'maxLength' && (
@@ -68,12 +68,12 @@ const HookForm = () => {
                 />
               </div>
             </div>
-            <div className={S.elemOutput}>{aboutInfo.lastName}</div>
+            <div className='elemOutput'>{aboutInfo.lastName}</div>
           </div>
-          <div className={S.elem}>
-            <div className={S.elemFieldName}>Адресс</div>
-            <div className={S.elemField}>
-              <div className={S.errorField}>
+          <div className='elem'>
+            <div className='elemFieldName'>Адресс</div>
+            <div className='elemField'>
+              <div className='errorField'>
                 {' '}
                 {errors.adress?.type === 'required' && <p role='alert'>(Введите адрес)</p>}
                 {errors.adress?.type === 'maxLength' && (
@@ -92,12 +92,12 @@ const HookForm = () => {
               </div>
             </div>
 
-            <div className={S.elemOutput}>{aboutInfo.adress}</div>
+            <div className='elemOutput'>{aboutInfo.adress}</div>
           </div>
-          <div className={S.elem}>
-            <div className={S.elemFieldName}>Возраст</div>
-            <div className={S.elemField}>
-              <div className={S.errorField}>
+          <div className='elem'>
+            <div className='elemFieldName'>Возраст</div>
+            <div className='elemField'>
+              <div className='errorField'>
                 {errors.age?.type === 'required' && <p role='alert'>(Введите возраст)</p>}
                 {errors.age?.type === 'maxLength' && (
                   <p role='alert'>(Неужели тебе больше 100 лет?)</p>
@@ -117,9 +117,9 @@ const HookForm = () => {
                 />
               </div>
             </div>
-            <div className={S.elemOutput}>{aboutInfo.age}</div>
+            <div className='elemOutput'>{aboutInfo.age}</div>
           </div>
-          <div className={S.submitInput}>
+          <div className='submitInput'>
             <Button type='primary' htmlType='submit' style={{ width: '120px' }}>
               Принять
             </Button>

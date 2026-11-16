@@ -1,9 +1,10 @@
-import H from './Header.module.css'
 import headerImg from './Header.png'
+
+import './Header.scss'
 
 const Header = (): JSX.Element => {
   return (
-    <header className={H.header}>
+    <header className='header'>
       <img src={headerImg} alt='Site header' />
     </header>
   )

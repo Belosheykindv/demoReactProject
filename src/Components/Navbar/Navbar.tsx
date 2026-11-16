@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import N from './Navbar.module.css'
+
+import './Navbar.scss'
 
 type NavbarProps = {
   isAuth: boolean
@@ -10,8 +11,8 @@ type NavbarProps = {
 const Navbar = (props: NavbarProps): JSX.Element => {
   // let userElements = props.users.map(p => <DialogItem userId={p.id} imgSrc={p.imgSrc} name={p.name} key={p.id} />);
   return (
-    <nav className={N.nav}>
-      <div className={N.friends}>
+    <nav className='navbar'>
+      <div className='navbarFriends'>
         {' '}
         {props.isAuth ? (
           <div>
@@ -22,45 +23,63 @@ const Navbar = (props: NavbarProps): JSX.Element => {
           <NavLink to='/login'>Логин</NavLink>
         )}{' '}
       </div>
-      <div className={N.item}>
+      <div className='navbarItem'>
         {' '}
-        <NavLink to='/profile' className={(navData) => (navData.isActive ? N.active : N.item)}>
+        <NavLink
+          to='/profile'
+          className={(navData) => (navData.isActive ? 'navbarActive' : 'navbarItem')}
+        >
           Профили
         </NavLink>
       </div>
-      <div className={N.item}>
+      <div className='navbarItem'>
         {' '}
-        <NavLink to='/dialogs' className={(navData) => (navData.isActive ? N.active : N.item)}>
+        <NavLink
+          to='/dialogs'
+          className={(navData) => (navData.isActive ? 'navbarActive' : 'navbarItem')}
+        >
           Сообщения
         </NavLink>
       </div>
-      <div className={N.item}>
+      <div className='navbarItem'>
         {' '}
-        <NavLink to='/chat' className={(navData) => (navData.isActive ? N.active : N.item)}>
+        <NavLink
+          to='/chat'
+          className={(navData) => (navData.isActive ? 'navbarActive' : 'navbarItem')}
+        >
           Чат
         </NavLink>
       </div>
-      <div className={N.item}>
+      <div className='navbarItem'>
         {' '}
-        <NavLink to='/music' className={(navData) => (navData.isActive ? N.active : N.item)}>
+        <NavLink
+          to='/music'
+          className={(navData) => (navData.isActive ? 'navbarActive' : 'navbarItem')}
+        >
           Музыка
         </NavLink>
       </div>
-      <div className={N.item}>
+      <div className='navbarItem'>
         {' '}
-        <NavLink to='/settings' className={(navData) => (navData.isActive ? N.active : N.item)}>
+        <NavLink
+          to='/settings'
+          className={(navData) => (navData.isActive ? 'navbarActive' : 'navbarItem')}
+        >
           Настройки
         </NavLink>
       </div>
-      <div className={N.item}>
+      <div className='navbarItem'>
         {' '}
-        <NavLink to='/users' className={(navData) => (navData.isActive ? N.active : N.item)}>
+        <NavLink
+          to='/users'
+          className={(navData) => (navData.isActive ? 'navbarActive' : 'navbarItem')}
+        >
           Пользователи
         </NavLink>
       </div>
-      <div className={N.nav}>Тут будет реклама</div>
+      <div className='navbar'>Тут будет реклама</div>
       {/* {props.isAuth
-      ? <div className={N.friends}> Друзья{userElements}</div>
+      ? <div className='navbarFriends'> Друзья{userElements}</div>
       : null} */}
     </nav>
   )

@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createElement } from 'react'
 import { Field } from 'react-final-form'
-import styles from './formControls.module.css'
+
+import './formControls.scss'
 
 export const FormCreate = ({ input, meta, fieldType, ...props }: any) => {
   const hasError = meta.touched && meta.error
   return (
-    <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
+    <div className={`formControl${hasError ? ' error' : ''}`}>
       <div>{createElement(fieldType, { ...input, ...props })}</div>
       {hasError && <span>{meta.error}</span>}
     </div>

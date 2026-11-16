@@ -2,11 +2,12 @@ import type { MyPostsProps } from 'types/profile'
 
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import P from './MyPosts.module.css'
 import { addPost } from '@redux/profilePage-reducer'
 import { Form as AntDForm, Button, Input } from 'antd'
 
 import { PostComponent } from '@components/Profile/MyPosts/Post'
+
+import './MyPosts.scss'
 
 // const maxLength60 = maxLengthCreator(60);
 
@@ -44,17 +45,17 @@ const MyPosts = (props: MyPostsProps) => {
     return null
   }
   return (
-    <div className={P.profile}>
-      <div className={P.MyPostsClass}>
+    <div className='myPosts'>
+      <div className='MyPostsClass'>
         <h3>Мои посты (Хардкод Без API)</h3>
         <div>
           <AntDForm
-            className={P.inputBlock}
+            className='postInputBlock'
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             form={form}
           >
-            <AntDForm.Item name={'postInput'} className={P.textBlock}>
+            <AntDForm.Item name={'postInput'} className='textBlock'>
               <Input
                 name={'postInput'}
                 showCount={true}
@@ -65,8 +66,8 @@ const MyPosts = (props: MyPostsProps) => {
                 }}
               />
             </AntDForm.Item>
-            <AntDForm.Item className={P.btnBlock}>
-              <Button disabled={isActive != true} className={P.btnBlock} htmlType='submit'>
+            <AntDForm.Item className='postBtnBlock'>
+              <Button disabled={isActive != true} className='postBtnBlock' htmlType='submit'>
                 Добавить
               </Button>
             </AntDForm.Item>

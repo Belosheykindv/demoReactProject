@@ -7,8 +7,9 @@ import { addDialogMessage } from '@redux/dialogPage-reducer'
 import { IRootStore } from '@redux/reduxStore'
 import { Input } from 'antd'
 
+import './Dialogs.scss'
+
 import { DialogItemComponent } from '@components/Dialogs/DialogItem'
-import s from '@components/Dialogs/Dialogs.module.css'
 import { MessageComponent } from '@components/Dialogs/Message'
 import { maxLength100, required } from '@utils/Validators/validators'
 
@@ -47,9 +48,9 @@ const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
   const messageElement = messages.map((m) => <MessageComponent message={m.message} key={m.id} />)
   if (props.auth === false) return <Navigate to={'/login'} />
   return (
-    <nav className={s.dialogs}>
+    <nav className='dialogs'>
       <div>{dialogElements}</div>
-      <div className={s.messages}>
+      <div className='messages'>
         <Form
           onSubmit={onSubmit}
           render={({ handleSubmit }) => (
@@ -76,7 +77,7 @@ const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
         />
         {messageElement}
       </div>
-      <div className={s.messages}>Здесь могла бы быть ваша реклама</div>
+      <div className='messages'>Здесь могла бы быть ваша реклама</div>
     </nav>
   )
 }

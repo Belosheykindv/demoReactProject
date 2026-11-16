@@ -1,17 +1,16 @@
+.myPosts {
+  display: block;
+}
 .MyPostsClass {
   padding: 10px;
 }
-
-.inputBlock {
+.postInputBlock {
   display: flex;
 }
-
 .textBlock {
   flex: 6;
 }
-
-.btnBlock {
+.postBtnBlock {
   flex: 1;
-  /* width: 80px; */
   text-align: center;
 }

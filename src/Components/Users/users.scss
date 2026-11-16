@@ -1,18 +1,15 @@
-.item {
-  /* padding: 5px; */
+.usersItem {
   display: flex;
 }
-
-.item span {
+.usersItem span {
   padding: 5px;
   margin-left: 15px;
 }
-.button button {
+.usersButton button {
   font-family: 'Ubuntu', sans-serif;
   position: relative;
   font-weight: 40;
   font-size: 0.8rem;
-  /* color: rgb(72, 0, 255); */
   line-height: 1.5;
   height: 20px;
   transition: all 200ms linear;
@@ -29,24 +26,10 @@
   box-shadow: 5px 7px 12px 0 rgba(5, 5, 5, 0.377);
   outline: 0;
   text-transform: capitalize;
-  /* background-color: rgb(113, 104, 250);  */
 }
-.item img {
+.usersItem img {
   width: 90px;
   height: 100px;
   border-radius: 5px;
   box-shadow: 5px 7px 12px 0 rgba(5, 5, 5, 0.377);
-}
-
-.item img span {
-  cursor: pointer;
-}
-
-.img {
-  width: 128px;
-  height: 384px;
-}
-
-.selectedPage {
-  font-weight: bold;
 }

@@ -3,11 +3,14 @@ import { useState } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 import { FormCreate } from '@components/Common/FormControls'
-import styles from '@components/Common/FormControls/formControls.module.css'
+
+import '@components/Common/FormControls/formControls.scss'
+
 import { ProfileStatusComponent } from '@components/Profile/ProfileStatus'
 import { maxLengthCreator, required } from '@utils/Validators/validators'
 
-import S from './ProfileInfo.module.scss'
+import './ProfileInfo.scss'
+import './ProfileAboutMe.scss'
 
 const maxLength14 = maxLengthCreator(14)
 const maxLength30 = maxLengthCreator(30)
@@ -99,7 +102,7 @@ const Profile = ({
         <b>Контакты: </b>
         {Object.keys(profile.contacts).map((contactTitle) => {
           return (
-            <div key={contactTitle} className={S.contact}>
+            <div key={contactTitle} className='contact'>
               <Contact
                 contactTitle={contactTitle}
                 contactValue={profile.contacts[contactTitle] || 'Отсутствует'}
@@ -139,9 +142,9 @@ const ProfileFormData = ({
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <div className={S.aboutMeBlock}>
-          <div className={S.key}>Кто я</div>
-          <div className={S.field}>
+        <div className='aboutMeBlock'>
+          <div className='key'>Кто я</div>
+          <div className='field'>
             <Field
               name={'fullName'}
               component={FormCreate}
@@ -150,9 +153,9 @@ const ProfileFormData = ({
             />
           </div>
         </div>
-        <div className={S.aboutMeBlock}>
-          <div className={S.key}> Ищу работу - </div>
-          <div className={S.field}>
+        <div className='aboutMeBlock'>
+          <div className='key'> Ищу работу - </div>
+          <div className='field'>
             <Field
               name={'lookingForAJob'}
               component={FormCreate}
@@ -161,9 +164,9 @@ const ProfileFormData = ({
             />
           </div>
         </div>
-        <div className={S.aboutMeBlock}>
-          <div className={S.key}>Место работы -</div>
-          <div className={S.field}>
+        <div className='aboutMeBlock'>
+          <div className='key'>Место работы -</div>
+          <div className='field'>
             <Field
               name={'lookingForAJobDescription'}
               validate={[required, maxLength14]}
@@ -172,9 +175,9 @@ const ProfileFormData = ({
             />
           </div>
         </div>
-        <div className={S.aboutMeBlock}>
-          <div className={S.key}> Обо мне - </div>
-          <div className={S.field}>
+        <div className='aboutMeBlock'>
+          <div className='key'> Обо мне - </div>
+          <div className='field'>
             <Field
               name={'aboutMe'}
               component={FormCreate}
@@ -188,9 +191,9 @@ const ProfileFormData = ({
         <b>Контакты: </b>
         {Object.keys(profile.contacts).map((key) => {
           return (
-            <div key={key} className={S.contact}>
-              <div className={S.key}>{key}</div>
-              <div className={S.field}>
+            <div key={key} className='contact'>
+              <div className='key'>{key}</div>
+              <div className='field'>
                 <Field
                   validate={[maxLength40]}
                   name={'contacts.' + key}
@@ -203,7 +206,7 @@ const ProfileFormData = ({
           )
         })}
       </div>
-      {error && <div className={styles.formSummaryError}> {error} </div>}
+      {error && <div className='formSummaryError'> {error} </div>}
       <button>Сохранить</button>
     </form>
   )

@@ -7,7 +7,7 @@ import { PreloaderComponent } from '@components/Common'
 import { ProfileAboutMe } from '@components/Profile/ProfileInfo/ProfileAboutMe'
 import Anonym from '@src/Images/userPhoto.png'
 
-import P from './ProfileInfo.module.scss'
+import './ProfileInfo.scss'
 
 // import { Field, Form } from 'react-final-form';
 
@@ -27,18 +27,18 @@ const ProfileInfo = React.memo((props: ProfileViewProps) => {
   }
 
   return (
-    <div className={P.profile}>
-      <div className={P.photoBlock}>
+    <div className='profileInfo'>
+      <div className='photoBlock'>
         {!props.userId && <label htmlFor='upload-photo'>Загрузить новое фото</label>}
         <img src={props.profile.photos.large || Anonym}></img>
         {isError && (
           <div style={{ border: '2px', color: 'red' }}> Файл не должен превышать 4МБ </div>
         )}
         {!props.userId && (
-          <input className={P.hideUnput} id='upload-photo' onChange={onChange} type={'file'} />
+          <input className='hideUnput' id='upload-photo' onChange={onChange} type={'file'} />
         )}
       </div>
-      <div className={P.infoBlock}>
+      <div className='infoBlock'>
         <div>
           {
             <ProfileAboutMe

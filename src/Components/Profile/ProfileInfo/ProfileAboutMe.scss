@@ -1,0 +1,19 @@
+.contact {
+  padding-left: 10px;
+  display: flex;
+  position: relative;
+}
+.key {
+  flex: content;
+  margin: 1px;
+}
+.aboutMeBlock {
+  display: flex;
+}
+.field {
+  justify-items: center;
+  text-wrap: wrap;
+  width: max-content;
+  margin: 1px;
+  align-items: flex-start;
+}

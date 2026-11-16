@@ -6,8 +6,9 @@ import { Navigate } from 'react-router-dom'
 import { login } from '@redux/authReducer'
 
 import { FormCreate } from '@components/Common/FormControls'
-import styles from '@components/Common/FormControls/formControls.module.css'
-import S from '@components/Login/login.module.css'
+
+import './login.scss'
+
 import Input from 'antd/es/input/Input'
 
 const Fields = ({ names, subscription, fieldsState = {}, children, originalRender }: any) => {
@@ -96,10 +97,10 @@ const Login2 = (props: any) => {
               />{' '}
               Remember me
             </div>
-            {props.error && <div className={styles.formSummaryError}> {props.error} </div>}
+            {props.error && <div className='formSummaryError'> {props.error} </div>}
             <div>
               {' '}
-              <button className={S.btn} type={'submit'} disabled={submitting || pristine}>
+              <button className='loginBtn' type={'submit'} disabled={submitting || pristine}>
                 Войти
               </button>{' '}
             </div>

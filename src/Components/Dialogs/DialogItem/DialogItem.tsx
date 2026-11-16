@@ -1,10 +1,11 @@
 import type { Dialog } from 'types/components'
 
 import { useState } from 'react'
-import s from './DialogItem.module.css'
 import { Button, Card } from 'antd'
 
 import Modal from 'antd/es/modal/Modal'
+
+import './DialogItem.scss'
 
 type DialogItemProps = Dialog & { ingridients: Dialog[] }
 
@@ -41,7 +42,7 @@ const DialogItem = (props: DialogItemProps): JSX.Element => {
   ))
 
   return (
-    <div className={s.dialogsItems}>
+    <div className='dialogItem'>
       <img src={props.imgSrc} alt={props.name} />
       {/* <NavLink to={path} className={navData => navData.isActive ? s.active : s.dialogsItems}> */}
       <div>
@@ -60,27 +61,27 @@ const DialogItem = (props: DialogItemProps): JSX.Element => {
         cancelButtonProps={{ style: { display: 'none' } }}
         okButtonProps={{ style: { width: 'min-content' } }}
       >
-        <div className={s.modalBlock}>
-          <div className={s.imgBlock}>
+        <div className='modalBlock'>
+          <div className='imgBlock'>
             <img src={props.imgSrc} alt={props.name} />
           </div>
-          <div className={s.descriptionBlock}>
-            <div className={s.name}>
+          <div className='descriptionBlock'>
+            <div className='dialogName'>
               {' '}
               <h3>{props.name}</h3>
             </div>
-            <div className={s.lowDescriptions}>
+            <div className='lowDescriptions'>
               <span>25 см, традиционное тесто 25, 380 г</span>
             </div>
-            <div className={s.btnBlock}>
+            <div className='dialogBtnBlock'>
               <Button>Small</Button>
               <Button>Medium</Button>
               <Button>Large</Button>
             </div>
-            <div className={s.name}>
+            <div className='dialogName'>
               <span>Добавить по вкусу</span>
             </div>
-            <div className={s.cardBlock}>{ingridients}</div>
+            <div className='cardBlock'>{ingridients}</div>
           </div>
         </div>
       </Modal>

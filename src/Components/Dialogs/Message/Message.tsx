@@ -1,8 +1,8 @@
-import s from '@components/Dialogs/Dialogs.module.css'
+import '@components/Dialogs/Dialogs.scss'
 
 const Message = (props: { message: string }) => {
   return (
-    <div className={s.messages}>
+    <div className='messages'>
       {props.message} <hr />
     </div>
   )

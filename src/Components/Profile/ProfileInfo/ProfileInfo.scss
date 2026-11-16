@@ -1,0 +1,30 @@
+.profileInfo {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.profileInfo img {
+  width: 240px;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+.profileInfo input {
+  width: 240px;
+}
+.photoBlock {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-right: 10px;
+}
+.infoBlock {
+  flex: 2;
+}
+.hideUnput {
+  opacity: 0;
+  width: 0%;
+  height: 0%;
+}

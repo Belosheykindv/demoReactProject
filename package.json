@@ -44,7 +44,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src/**/*.{ts,tsx} --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prettier": "prettier --write types/ src/ public/ index.html vite.config.ts",
+    "prettier": "prettier --write src/ public/ index.html vite.config.ts",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

@@ -1,45 +1,22 @@
-.dialogs {
-  display: grid;
-  grid-template-columns: 2fr 5fr;
-}
-
-.dialogsItems {
-  grid-area: n;
+.dialogItem {
   padding: 10px;
   text-decoration: none;
   color: rgb(0, 0, 0);
   text-align: center;
   align-content: center;
+  margin: 10px;
 }
-
-.dialogsItems .active {
-  color: gold;
-  padding: 10px;
-}
-
-.messages {
-  padding: 16px;
-  color: rgb(0, 0, 0);
-}
-
-.dialogs img {
+.dialogItem img {
   width: 60px;
   height: 60px;
   border-radius: 30px;
 }
 .modalBlock {
   display: grid;
-  grid-template-areas:
-    'A A B'
-    'A A B';
+  grid-template-areas: 'A A B' 'A A B';
 }
 .imgBlock {
-  grid-area: 'A';
-}
-.descriptionBlock {
-  grid-area: 'B';
-}
-.imgBlock {
+  grid-area: A;
   display: flex;
   align-items: center;
 }
@@ -48,17 +25,11 @@
   height: 450px;
   margin-right: 10px;
 }
-.name {
+.descriptionBlock {
+  grid-area: B;
 }
-.lowDescription {
-}
-.btnBlock {
-}
-.btnBlock button {
+.dialogBtnBlock button {
   width: 120px;
-}
-.btnBlock button .active {
-  background-color: grey;
 }
 .cardBlock {
   display: flex;
@@ -72,7 +43,6 @@
 }
 .cardBlock img {
   padding: 5px;
-  /* height: min-content; */
 }
 .ingrDescription {
   font-size: small;

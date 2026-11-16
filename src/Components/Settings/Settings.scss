@@ -1,20 +1,16 @@
-.component img {
+.settingsComponent img {
   height: 600px;
 }
-
-.component {
+.settingsComponent {
   display: flex;
 }
-
-.component li {
+.settingsComponent li {
   padding-left: 20px;
 }
-
 .buttonWrapper {
   padding-bottom: 25px;
 }
-
-.button {
+.settingsButton {
   font-family: 'Ubuntu', sans-serif;
   position: relative;
   font-weight: 40;

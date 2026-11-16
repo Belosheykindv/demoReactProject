@@ -8,7 +8,7 @@ import { addNewTodo, checkTodo, delNewTodo } from '@redux/todoReducer'
 import { Form as AntDForm, Button, Input } from 'antd'
 import { compose } from 'redux'
 
-import s from '@components/ToDO/todo.module.scss'
+import './todo.scss'
 
 type TodoFormValues = {
   postInput: string
@@ -42,16 +42,16 @@ const ToDolist = (props: TodoListProps) => {
   }
 
   return (
-    <div className={s.todoMain}>
+    <div className='todoMain'>
       <h1>ToDo List</h1>
       <div>
         <AntDForm
-          className={s.todoInputBlock}
+          className='todoInputBlock'
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           form={form}
         >
-          <AntDForm.Item name='postInput' className={s.todoInput}>
+          <AntDForm.Item name='postInput' className='todoInput'>
             <Input
               name='postInput'
               showCount={true}
@@ -59,7 +59,7 @@ const ToDolist = (props: TodoListProps) => {
               onInput={(event) => buttonHandler(event.currentTarget.value)}
             />
           </AntDForm.Item>
-          <AntDForm.Item className={s.todoBtnBlock}>
+          <AntDForm.Item className='todoBtnBlock'>
             <Button type='primary' disabled={!isActive} htmlType='submit'>
               Добавить
             </Button>
@@ -69,10 +69,10 @@ const ToDolist = (props: TodoListProps) => {
           <div>
             <ul>
               {props.toDos.map((todo) => (
-                <div key={todo.id} className={s.todoList}>
-                  <div className={s.todoItemStandart}>
+                <div key={todo.id} className='todoList'>
+                  <div className='todoItemStandart'>
                     <input
-                      className={s.inputCB}
+                      className='inputCB'
                       type='checkbox'
                       checked={todo.isChecked}
                       id={todo.id}

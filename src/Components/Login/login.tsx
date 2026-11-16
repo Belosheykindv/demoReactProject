@@ -6,8 +6,9 @@ import { login } from '@redux/authReducer'
 import { Field, reduxForm } from 'redux-form'
 
 import { FormCreate } from '@components/Common/FormControls'
-import styles from '@components/Common/FormControls/formControls.module.css'
 import { maxLengthCreator, required } from '@utils/Validators/validators'
+
+import '@components/Common/FormControls/formControls.scss'
 
 const maxLength25 = maxLengthCreator(25)
 const maxLength12 = maxLengthCreator(12)
@@ -48,7 +49,7 @@ const LoginForm = (props: any) => {
           />{' '}
           Remember me
         </div>
-        {props.error && <div className={styles.formSummaryError}> {props.error} </div>}
+        {props.error && <div className='formSummaryError'> {props.error} </div>}
         <div>
           {' '}
           <button>Login</button>

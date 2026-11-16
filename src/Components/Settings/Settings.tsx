@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { connect } from 'react-redux'
-import style from './Settings.module.css'
 import { withAuthRedirect } from '@hoc/withAuthRedirect'
 import { getRandomBeer } from '@redux/settingPageReducer'
 import { compose } from 'redux'
@@ -9,19 +8,20 @@ import { v1 } from 'uuid'
 import anonymBeer from '@src/Images/anonymBeer.png'
 
 import './Setting.css'
+import './Settings.scss'
 
 const BeerComp = (props: any) => {
   return (
     <div>
-      <div className={style.buttonWrapper}>
-        <button className={style.button} onClick={() => props.getRandomBeer()}>
+      <div className='buttonWrapper'>
+        <button className='settingsButton' onClick={() => props.getRandomBeer()}>
           Получить случайное пиво!
         </button>
       </div>
       {!props.beer ? (
         <div>
           {props.beer.map((u: any) => (
-            <div className={style.component} key={u.id}>
+            <div className='settingsComponent' key={u.id}>
               <div>
                 <img src={u.image_url || anonymBeer} />
               </div>

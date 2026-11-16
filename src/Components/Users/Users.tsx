@@ -3,9 +3,10 @@ import type { User } from 'types/components'
 import { NavLink } from 'react-router-dom'
 import { Pagination, theme } from 'antd'
 
-import U from '@components/Users/users.module.css'
 import { followAPI } from '@src/Api/apiRequest'
 import userPhoto from '@src/Images/userPhoto.png'
+
+import './users.scss'
 
 type UsersProps = {
   users: User[]
@@ -54,7 +55,7 @@ const Users = (props: UsersProps): JSX.Element => {
           {' '}
           <hr />
           <span>
-            <div className={U.item}>
+            <div className='usersItem'>
               <div>
                 <NavLink to={'/profile/' + u.id}>
                   <img src={u.photos.small != null ? u.photos.small : userPhoto} alt={u.name} />
@@ -69,7 +70,7 @@ const Users = (props: UsersProps): JSX.Element => {
                 <span> Статус - {u.status || 'отсутствует'}</span>
               </div>
             </div>
-            <div className={U.button}>
+            <div className='usersButton'>
               {u.followed ? (
                 <button
                   disabled={props.followingInProgress.some((id) => id === u.id)}

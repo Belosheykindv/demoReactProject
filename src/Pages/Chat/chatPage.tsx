@@ -1,3 +1,5 @@
+import '@components/Dialogs/Dialogs.scss'
+
 import type { AppDispatch, RootState } from 'types/store'
 
 import React, { useEffect, useRef, useState } from 'react'
@@ -15,8 +17,9 @@ import {
 import { Button, Input, theme } from 'antd'
 import { compose } from 'redux'
 
-import style from '@components/Dialogs/Dialogs.module.css'
 import userPhoto from '@src/Images/userPhoto.png'
+
+import '@components/Dialogs/Dialogs.scss'
 
 const ChatPage = () => {
   return (
@@ -146,7 +149,7 @@ const AddMessageForm = () => {
           placeholder='Введите сообщение'
         ></Input>
         <Button
-          className={btnStatus ? style.btn : style.disBtn}
+          className={btnStatus ? 'chatBtn' : 'chatDisBtn'}
           disabled={status !== 'ready' && btnStatus !== true}
           onClick={sendMessageHandler}
         >
