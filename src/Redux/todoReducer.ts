@@ -59,7 +59,7 @@ export const checkedTodo = (data: any) => {
 export const addNewTodo = (todo: any) => (dispatch: any) => {
   dispatch(addTodoAC(todo))
 }
-export const delNewTodo = (todo: any) => (dispatch: any ) => {
+export const delNewTodo = (todo: any) => (dispatch: any) => {
   dispatch(delTodoAC(todo))
 }
 export const checkTodo = (todo: any) => (dispatch: any) => {

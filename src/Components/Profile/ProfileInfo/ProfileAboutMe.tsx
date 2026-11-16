@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
-// @ts-expect-error ProfileStatus is a legacy JavaScript component without declarations.
-import { ProfileStatusComponent } from '../ProfileStatus'
 import { Field, reduxForm } from 'redux-form'
 
-import { maxLengthCreator, required } from '../../../Utils/Validators/validators'
-import { FormCreate } from '../../Common/FormControls/formControls'
-import styles from '../../Common/FormControls/formControls.module.css'
+import { FormCreate } from '@components/Common/FormControls'
+import styles from '@components/Common/FormControls/formControls.module.css'
+import { ProfileStatusComponent } from '@components/Profile/ProfileStatus'
+import { maxLengthCreator, required } from '@utils/Validators/validators'
 
 import S from './ProfileInfo.module.scss'
 

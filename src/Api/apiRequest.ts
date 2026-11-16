@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { profileType } from '@redux/profilePage-reducer'
 import axios from 'axios'
-
-import { profileType } from '../Redux/profilePage-reducer'
 
 const instance = axios.create({
   withCredentials: true,
@@ -12,8 +10,19 @@ const beerInstance = axios.create({
   baseURL: 'https://api.punkapi.com/v2/beers/',
 })
 
-type subScriberType = {
-  [key: string]: Array<string>
+type ChatStatus = 'pending' | 'ready' | 'error'
+type ChatMessage = Array<{
+  userId: number
+  userName: string
+  photo: string | null
+  message: string
+}>
+type ChatEvent = 'messages-received' | 'status-changed'
+type ChatSubscriber<T> = (payload: T) => void
+
+type ChatSubscribers = {
+  'messages-received': Array<ChatSubscriber<ChatMessage>>
+  'status-changed': Array<ChatSubscriber<ChatStatus>>
 }
 export const userAPI = {
   getUsers: async (pageSize: number, pagesCount: number) => {
@@ -93,15 +102,15 @@ export const profileAPI = {
   },
 }
 // API для страницы чата*******************************************
-const subscribers: subScriberType = {
+const subscribers: ChatSubscribers = {
   'messages-received': [],
   'status-changed': [],
 }
 let ws: WebSocket | null = null
 
 const setMessageHandler = (e: { data: string }) => {
-  const newMessages = JSON.parse(e.data)
-  subscribers['messages-received'].forEach((s: any) => s(newMessages))
+  const newMessages = JSON.parse(e.data) as ChatMessage
+  subscribers['messages-received'].forEach((subscriber) => subscriber(newMessages))
 }
 const openHandler = () => {
   notifySubscribersAaboutStatus('ready')
@@ -117,8 +126,8 @@ const errorHandler = () => {
   console.error('Refresh page (Какая-то ошибка)')
 }
 
-const notifySubscribersAaboutStatus = (status: string) => {
-  subscribers['status-changed'].forEach((s: any) => s(status))
+const notifySubscribersAaboutStatus = (status: ChatStatus) => {
+  subscribers['status-changed'].forEach((subscriber) => subscriber(status))
 }
 const cleanUp = (ws?: WebSocket) => {
   ws?.removeEventListener('close', closeHandler)
@@ -150,14 +159,24 @@ export const chatAPI = {
     ws?.close()
     console.log('Channel is closed')
   },
-  subscribe: (eventName: string, callback: any) => {
-    subscribers[eventName].push(callback)
+  subscribe: <TEvent extends ChatEvent>(
+    eventName: TEvent,
+    callback: ChatSubscribers[TEvent][number],
+  ) => {
+    ;(subscribers[eventName] as Array<typeof callback>).push(callback)
     return () => {
-      subscribers[eventName] = subscribers[eventName].filter((s: any) => s !== callback)
+      subscribers[eventName] = subscribers[eventName].filter(
+        (subscriber) => subscriber !== callback,
+      ) as ChatSubscribers[TEvent]
     }
   },
-  unsubscribe: (eventName: string, callback: any) => {
-    subscribers[eventName] = subscribers[eventName].filter((s: any) => s !== callback)
+  unsubscribe: <TEvent extends ChatEvent>(
+    eventName: TEvent,
+    callback: ChatSubscribers[TEvent][number],
+  ) => {
+    subscribers[eventName] = subscribers[eventName].filter(
+      (subscriber) => subscriber !== callback,
+    ) as ChatSubscribers[TEvent]
   },
   sendMessage: (message: string) => {
     ws?.send(message)

@@ -1,12 +1,12 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import S from './hookForm.module.css'
+import { withAuthRedirect } from '@hoc/withAuthRedirect'
+import { Istate, setSubmitData } from '@redux/hookFormReducer'
+import { IRootStore } from '@redux/reduxStore'
 import { Button, Input } from 'antd'
 import { compose } from 'redux'
 
-import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
-import { Istate, setSubmitData } from '../../Redux/hookFormReducer'
-import { IRootStore } from '../../Redux/reduxStore'
+import S from '@components/HookFrom/hookForm.module.css'
 
 const HookForm = () => {
   const {

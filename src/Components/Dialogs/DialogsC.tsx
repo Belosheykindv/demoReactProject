@@ -3,15 +3,14 @@ import { useState } from 'react'
 import { Field, Form } from 'react-final-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import s from './Dialogs.module.css'
+import { addDialogMessage } from '@redux/dialogPage-reducer'
+import { IRootStore } from '@redux/reduxStore'
 import { Input } from 'antd'
 
-import { addDialogMessage } from '../../Redux/dialogPage-reducer'
-import { IRootStore } from '../../Redux/reduxStore'
-import { maxLength100, required } from '../../Utils/Validators/validators'
-// @ts-expect-error DialogItem is a legacy JSX module without a declaration file.
-import { DialogItemComponent } from './DialogItem/DialogItem'
-import { MessageComponent } from './Message/Message'
+import { DialogItemComponent } from '@components/Dialogs/DialogItem'
+import s from '@components/Dialogs/Dialogs.module.css'
+import { MessageComponent } from '@components/Dialogs/Message'
+import { maxLength100, required } from '@utils/Validators/validators'
 
 const Dialogs = (props: { auth: boolean; dialogsPage: any }) => {
   const dispatch = useDispatch()

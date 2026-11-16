@@ -3,33 +3,44 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { connect, Provider } from 'react-redux'
 import { HashRouter, NavLink, Route, Routes } from 'react-router-dom'
 import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined } from '@ant-design/icons'
+import { PreloaderComponent } from '@components/Common'
+import { HookFormComponent } from '@components/HookFrom'
+import { LoginComponent, LoginRFFComponent } from '@components/Login'
+import { MusicComponent } from '@components/Music'
+import { SettingsComponent } from '@components/Settings'
+import { TodoComponent } from '@components/ToDO'
+import { withRouter } from '@hoc/withRouter'
+import { initializedApp } from '@redux/appReducer'
+import { logout } from '@redux/authReducer'
+import store from '@redux/reduxStore'
 import { Button, Layout, Menu, theme } from 'antd'
 import { compose } from 'redux'
 
-import { PreloaderComponent } from '../Components/Common/Preloader/preloader'
-import { HookFormComponent } from '../Components/HookFrom/hookForm'
-import { LoginComponent } from '../Components/Login/login'
-import { LoginRFFComponent } from '../Components/Login/loginRFF'
-import { MusicComponent } from '../Components/Music/Music'
-import { SettingsComponent } from '../Components/Settings/Settings'
-// @ts-expect-error Settings is a JavaScript component without a declaration file.
-import { TodoComponent } from '../Components/ToDO/todo'
-import { withRouter } from '../Hoc/withRouter'
-import { initializedApp } from '../Redux/appReducer'
-import { logout } from '../Redux/authReducer'
-import store from '../Redux/reduxStore'
 import { Footer } from 'antd/es/layout/layout'
 
 import './app.scss'
 
 const { Header, Sider, Content } = Layout
-// @ts-expect-error Settings is a JavaScript component without a declaration file.
-const ProfileContainer = React.lazy(() => import('../Components/Profile/profileContainer').then((module) => ({ default: module.ProfileContainerComponent })))
-// @ts-expect-error Settings is a JavaScript component without a declaration file.
-const DialogsContainer = React.lazy(() => import('../Components/Dialogs/Dialogs-container').then((module) => ({ default: module.DialogsContainerComponent })))
-// @ts-expect-error Settings is a JavaScript component without a declaration file.
-const UsersContainer = React.lazy(() => import('../Components/Users/usersContainer').then((module) => ({ default: module.UsersContainerComponent })))
-const ChatPage = React.lazy(() => import('../Pages/Chat/chatPage').then((module) => ({ default: module.ChatPageComponent })))
+const ProfileContainer = React.lazy(() =>
+  import('@components/Profile').then((module) => ({
+    default: module.ProfileContainerComponent as React.ComponentType,
+  })),
+)
+const DialogsContainer = React.lazy(() =>
+  import('@components/Dialogs').then((module) => ({
+    default: module.DialogsContainerComponent as React.ComponentType,
+  })),
+)
+const UsersContainer = React.lazy(() =>
+  import('@components/Users').then((module) => ({
+    default: module.UsersContainerComponent as React.ComponentType,
+  })),
+)
+const ChatPage = React.lazy(() =>
+  import('@src/Pages/Chat/chatPage').then((module) => ({
+    default: module.ChatPageComponent as React.ComponentType,
+  })),
+)
 
 const App = (props: any) => {
   const [collapsed, setCollapsed] = useState(false)

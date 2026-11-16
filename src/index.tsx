@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { SamuraiJSAPP } from './app'
-
-import store from './Redux/reduxStore'
+import store from '@redux/reduxStore'
+import { SamuraiJSAPP } from '@src/app'
 
 import './index.css'
 

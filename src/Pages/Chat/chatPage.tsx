@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { AppDispatch, RootState } from 'types/store'
+
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { Button, Input, theme } from 'antd'
-import { compose } from 'redux'
-
-import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
+import { withAuthRedirect } from '@hoc/withAuthRedirect'
 import {
   sendMessage,
   startMessagesListening,
@@ -13,9 +11,12 @@ import {
   stopMessagesListening,
   stopStatusListening,
   unmountChat,
-} from '../../Redux/chatReducer'
-import userPhoto from '../../Images/userPhoto.png'
-import style from '../../Components/Dialogs/Dialogs.module.css'
+} from '@redux/chatReducer'
+import { Button, Input, theme } from 'antd'
+import { compose } from 'redux'
+
+import style from '@components/Dialogs/Dialogs.module.css'
+import userPhoto from '@src/Images/userPhoto.png'
 
 const ChatPage = () => {
   return (
@@ -26,7 +27,7 @@ const ChatPage = () => {
 }
 
 const Chat = () => {
-  const dispatch = useDispatch<any>()
+  const dispatch = useDispatch<AppDispatch>()
   useEffect(() => {
     dispatch(startMessagesListening())
     dispatch(startStatusListening())
@@ -45,17 +46,25 @@ const Chat = () => {
 }
 
 const Messages = () => {
-  const messages = useSelector((state: any) => state.chat.messages)
+  const messages = useSelector((state: RootState) => state.chat.messages)
   return (
     <div style={{ height: '800px', overflowY: 'auto' }}>
-      {messages.map((m: any) => (
+      {messages.map((m) => (
         <Message key={m.id} message={m} />
       ))}
     </div>
   )
 }
 
-const Message = React.memo(({ message }: { message: any }) => {
+type ChatMessage = {
+  id: string
+  userId: number
+  userName: string
+  photo: string | null
+  message: string
+}
+
+const Message = React.memo(({ message }: { message: ChatMessage }) => {
   console.log('Отрисовка Сообщений')
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -105,8 +114,8 @@ const Message = React.memo(({ message }: { message: any }) => {
 
 const AddMessageForm = () => {
   const [message, setMessage] = useState<string>()
-  const dispatch = useDispatch<any>()
-  const status = useSelector((state: any) => state.chat.status)
+  const dispatch = useDispatch<AppDispatch>()
+  const status = useSelector((state: RootState) => state.chat.status)
   const inputRef = useRef(null)
   const [btnStatus, setButtonStatus] = useState(false)
   const sendMessageHandler = () => {

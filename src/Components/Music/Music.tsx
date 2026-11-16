@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { AudioControlsComponent } from './AudioControls'
-import tracks from './Music.data'
+import { withAuthRedirect } from '@hoc/withAuthRedirect'
 import useSound from 'use-sound' //для работы со звуком
 
-import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
+import { AudioControlsComponent } from '@components/Music/AudioControls'
+import { tracksData } from '@components/Music/Music.data'
 
 import './Music.scss'
 
@@ -14,17 +14,17 @@ type MusicProps = {
 
 const Music = React.memo((props: MusicProps) => {
   const [trackIndex, setTrackIndex] = useState(0)
-  const [seconds, setSeconds] = useState()
+  const [seconds, setSeconds] = useState<number | string>(0)
   const [isloading, setisLoading] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
-  const { title, artist, color, image, audioSrc } = tracks[trackIndex]
+  const { title, artist, color, image, audioSrc } = tracksData[trackIndex]
   const [play, { pause, stop, duration, sound }] = useSound(audioSrc)
 
   const toPrevTrack = () => {
     setIsPlaying(false)
     if (sound) {
       if (trackIndex - 1 < 0) {
-        setTrackIndex(tracks.length - 1)
+        setTrackIndex(tracksData.length - 1)
       } else {
         setTrackIndex(trackIndex - 1)
       }
@@ -34,7 +34,7 @@ const Music = React.memo((props: MusicProps) => {
   const toNextTrack = () => {
     setIsPlaying(false)
     if (sound) {
-      if (trackIndex < tracks.length - 1) {
+      if (trackIndex < tracksData.length - 1) {
         setTrackIndex(trackIndex + 1)
       } else {
         setTrackIndex(0)

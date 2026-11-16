@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { beerAPI } from '../Api/apiRequest'
+import { beerAPI } from '@src/Api/apiRequest'
 
 const ADD_BEER = 'ADD_BEER'
 

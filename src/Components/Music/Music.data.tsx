@@ -1,23 +1,31 @@
-import imgSrc3 from './assets/andromeda.png'
-import imgSrc from './assets/artwork.jpg'
-import imgSrc2 from './assets/artwork2.jpg'
-import imgSrc5 from './assets/artwork3.jpg'
-import imgSrc7 from './assets/blurredStars.png'
-import song0 from './assets/Music/Augustin Garnier - Fallen Down.mp3'
-import song1 from './assets/Music/LXST CXNTURY-Andromeda.mp3'
-import song2 from './assets/Music/LXST CXNTURY-OSAKA.mp3'
-import song3 from './assets/Music/LXST CXNTURY-VIOLENCE.mp3'
-import song4 from './assets/Music/Maf1k-Sigma Phonk.mp3'
-import song5 from './assets/Music/OXWAVE-BlurredStars.mp3'
-import song6 from './assets/Music/Pachalbel - Canon in D.mp3'
-import song7 from './assets/Music/Perry Como - Magic Moments.mp3'
-import song8 from './assets/Music/VOJ, Narvent - Memory Reboot.mp3'
-import imgSrc8 from './assets/snow.jpg'
-import imgSrc4 from './assets/uni1.jpeg'
-import imgSrc6 from './assets/uni2.jpg'
-import imgSrc9 from './assets/uni3.jpeg'
+import imgSrc3 from '@components/Music/assets/andromeda.png'
+import imgSrc from '@components/Music/assets/artwork.jpg'
+import imgSrc2 from '@components/Music/assets/artwork2.jpg'
+import imgSrc5 from '@components/Music/assets/artwork3.jpg'
+import imgSrc7 from '@components/Music/assets/blurredStars.png'
+import song0 from '@components/Music/assets/Music/Augustin Garnier - Fallen Down.mp3'
+import song1 from '@components/Music/assets/Music/LXST CXNTURY-Andromeda.mp3'
+import song2 from '@components/Music/assets/Music/LXST CXNTURY-OSAKA.mp3'
+import song3 from '@components/Music/assets/Music/LXST CXNTURY-VIOLENCE.mp3'
+import song4 from '@components/Music/assets/Music/Maf1k-Sigma Phonk.mp3'
+import song5 from '@components/Music/assets/Music/OXWAVE-BlurredStars.mp3'
+import song6 from '@components/Music/assets/Music/Pachalbel - Canon in D.mp3'
+import song7 from '@components/Music/assets/Music/Perry Como - Magic Moments.mp3'
+import song8 from '@components/Music/assets/Music/VOJ, Narvent - Memory Reboot.mp3'
+import imgSrc8 from '@components/Music/assets/snow.jpg'
+import imgSrc4 from '@components/Music/assets/uni1.jpeg'
+import imgSrc6 from '@components/Music/assets/uni2.jpg'
+import imgSrc9 from '@components/Music/assets/uni3.jpeg'
 
-const tracks = [
+export type Track = {
+  title: string
+  artist: string
+  audioSrc: string
+  image: string
+  color: string
+}
+
+const tracks: Track[] = [
   {
     title: 'OSAKA',
     artist: 'LXST CXNTURY',
@@ -83,4 +91,4 @@ const tracks = [
   },
 ]
 
-export default tracks
+export const tracksData = tracks

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch } from 'react'
-import { AppDispatch, IRootStore } from './reduxStore'
+import { AppDispatch, IRootStore } from '@redux/reduxStore'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { stopSubmit } from 'redux-form'
 import { v1 } from 'uuid'
 
-import { profileAPI } from '../Api/apiRequest'
-import Anonym from '../Images/userPhoto.png'
+import { profileAPI } from '@src/Api/apiRequest'
+import Anonym from '@src/Images/userPhoto.png'
 
 type postElType = {
   id: string

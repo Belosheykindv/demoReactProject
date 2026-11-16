@@ -1,5 +1,5 @@
 import { Dispatch } from 'react'
-import { getUserData } from './authReducer'
+import { getUserData } from '@redux/authReducer'
 
 const INITIALIZE_SUCCES = 'INITIALIZE_SUCCES'
 

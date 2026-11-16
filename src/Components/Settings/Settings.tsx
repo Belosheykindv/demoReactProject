@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { connect } from 'react-redux'
 import style from './Settings.module.css'
+import { withAuthRedirect } from '@hoc/withAuthRedirect'
+import { getRandomBeer } from '@redux/settingPageReducer'
 import { compose } from 'redux'
 import { v1 } from 'uuid'
 
-import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
-import { getRandomBeer } from '../../Redux/settingPageReducer'
-import anonymBeer from '../../Images/anonymBeer.png'
+import anonymBeer from '@src/Images/anonymBeer.png'
 
 import './Setting.css'
 
@@ -93,4 +93,7 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export const SettingsComponent = compose(connect(mapStateToProps, { getRandomBeer }), withAuthRedirect)(BeerComp)
+export const SettingsComponent = compose(
+  connect(mapStateToProps, { getRandomBeer }),
+  withAuthRedirect,
+)(BeerComp)

@@ -1,0 +1,1 @@
+export { DialogItemComponent } from './DialogItem'

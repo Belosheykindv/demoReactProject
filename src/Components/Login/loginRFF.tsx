@@ -3,11 +3,11 @@
 import { Field, Form } from 'react-final-form'
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import S from './login.module.css'
+import { login } from '@redux/authReducer'
 
-import { login } from '../../Redux/authReducer'
-import { FormCreate } from '../Common/FormControls/formControls'
-import styles from '../Common/FormControls/formControls.module.css'
+import { FormCreate } from '@components/Common/FormControls'
+import styles from '@components/Common/FormControls/formControls.module.css'
+import S from '@components/Login/login.module.css'
 import Input from 'antd/es/input/Input'
 
 const Fields = ({ names, subscription, fieldsState = {}, children, originalRender }: any) => {

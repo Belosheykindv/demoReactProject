@@ -2,12 +2,12 @@
 
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import { login } from '@redux/authReducer'
 import { Field, reduxForm } from 'redux-form'
 
-import { login } from '../../Redux/authReducer'
-import { maxLengthCreator, required } from '../../Utils/Validators/validators'
-import { FormCreate } from '../Common/FormControls/formControls'
-import styles from '../Common/FormControls/formControls.module.css'
+import { FormCreate } from '@components/Common/FormControls'
+import styles from '@components/Common/FormControls/formControls.module.css'
+import { maxLengthCreator, required } from '@utils/Validators/validators'
 
 const maxLength25 = maxLengthCreator(25)
 const maxLength12 = maxLengthCreator(12)

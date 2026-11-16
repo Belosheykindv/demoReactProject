@@ -2,14 +2,20 @@
 import { Dispatch } from 'react'
 import { v1 } from 'uuid'
 
-import { chatAPI } from '../Api/apiRequest'
+import { chatAPI } from '@src/Api/apiRequest'
 
 const MESSAGES_RECEIVED = 'MESSAGES_RECEIVED'
 const STATUS_CHANGED = 'STATUS_CHANGED'
 const UNMOUNT = 'UNMOUNT'
 type initialStateType = {
-  messages: Array<string>
-  status: 'pending' | 'ready'
+  messages: Array<{
+    id: string
+    userId: number
+    userName: string
+    photo: string | null
+    message: string
+  }>
+  status: 'pending' | 'ready' | 'error'
 }
 type unmountActionCreatorType = {
   type: typeof UNMOUNT
@@ -17,30 +23,32 @@ type unmountActionCreatorType = {
 }
 type messageReceivedActionCreatorType = {
   type: typeof MESSAGES_RECEIVED
-  messages: string
+  messages: Array<{ userId: number; userName: string; photo: string | null; message: string }>
 }
 type statusChangedActionCreatorType = {
   type: typeof STATUS_CHANGED
-  status: string
+  status: 'pending' | 'ready' | 'error'
 }
 type actionsType = {
   type: string
-  messages: object[]
-  status: string
+  messages: Array<{ userId: number; userName: string; photo: string | null; message: string }>
+  status: 'pending' | 'ready' | 'error'
 }
 let initialState: initialStateType = {
   messages: [],
   status: 'pending',
 }
-const chatReducer = (state = initialState, action: actionsType) => {
+const chatReducer = (
+  state: initialStateType = initialState,
+  action: actionsType,
+): initialStateType => {
   switch (action.type) {
     case MESSAGES_RECEIVED: {
       return {
         ...state,
-        messages: [
-          ...state.messages,
-          ...action.messages.map((m: object) => ({ ...m, id: v1() })),
-        ].filter((_m, index, array) => index >= array.length - 100),
+        messages: [...state.messages, ...action.messages.map((m) => ({ ...m, id: v1() }))].filter(
+          (_m, index, array) => index >= array.length - 100,
+        ),
       }
     }
     case STATUS_CHANGED: {
@@ -62,9 +70,10 @@ const chatReducer = (state = initialState, action: actionsType) => {
 }
 
 const newMessagesHandlerCreator = (dispatch: Dispatch<messageReceivedActionCreatorType>) => {
-  let _newMessagesHandler = null
+  let _newMessagesHandler:
+    ((messages: messageReceivedActionCreatorType['messages']) => void) | null = null
   if (_newMessagesHandler === null) {
-    _newMessagesHandler = (messages: string) => {
+    _newMessagesHandler = (messages: messageReceivedActionCreatorType['messages']) => {
       dispatch(messageReceivedActionCreator(messages))
     }
   }
@@ -72,9 +81,9 @@ const newMessagesHandlerCreator = (dispatch: Dispatch<messageReceivedActionCreat
 }
 
 const newStatusHandlerCreator = (dispatch: Dispatch<statusChangedActionCreatorType>) => {
-  let _newStatusHandler = null
+  let _newStatusHandler: ((status: statusChangedActionCreatorType['status']) => void) | null = null
   if (_newStatusHandler === null) {
-    _newStatusHandler = (status: string) => {
+    _newStatusHandler = (status: statusChangedActionCreatorType['status']) => {
       dispatch(statusChangedActionCreator(status))
     }
   }
@@ -84,20 +93,20 @@ const newStatusHandlerCreator = (dispatch: Dispatch<statusChangedActionCreatorTy
 export const startMessagesListening =
   () => async (dispatch: Dispatch<messageReceivedActionCreatorType>) => {
     chatAPI.start()
-    chatAPI.subscribe('messages-received', newMessagesHandlerCreator(dispatch))
+    chatAPI.subscribe('messages-received', newMessagesHandlerCreator(dispatch)!)
   }
 export const startStatusListening =
   () => async (dispatch: Dispatch<statusChangedActionCreatorType>) => {
-    chatAPI.subscribe('status-changed', newStatusHandlerCreator(dispatch))
+    chatAPI.subscribe('status-changed', newStatusHandlerCreator(dispatch)!)
   }
 export const stopMessagesListening =
   () => async (dispatch: Dispatch<messageReceivedActionCreatorType>) => {
-    chatAPI.unsubscribe('messages-received', newMessagesHandlerCreator(dispatch))
+    chatAPI.unsubscribe('messages-received', newMessagesHandlerCreator(dispatch)!)
     chatAPI.stop()
   }
 export const stopStatusListening =
   () => async (dispatch: Dispatch<statusChangedActionCreatorType>) => {
-    chatAPI.unsubscribe('status-changed', newStatusHandlerCreator(dispatch))
+    chatAPI.unsubscribe('status-changed', newStatusHandlerCreator(dispatch)!)
   }
 export const unmountChat = () => (dispatch: Dispatch<unmountActionCreatorType>) => {
   dispatch(unmountActionCreator())
@@ -106,12 +115,14 @@ export const sendMessage = (message: string) => async () => {
   chatAPI.sendMessage(message)
 }
 export const messageReceivedActionCreator = (
-  messages: string,
+  messages: messageReceivedActionCreatorType['messages'],
 ): messageReceivedActionCreatorType => {
   return { type: MESSAGES_RECEIVED, messages }
 }
 
-export const statusChangedActionCreator = (status: string): statusChangedActionCreatorType => {
+export const statusChangedActionCreator = (
+  status: statusChangedActionCreatorType['status'],
+): statusChangedActionCreatorType => {
   return { type: STATUS_CHANGED, status }
 }
 

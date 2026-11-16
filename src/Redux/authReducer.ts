@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch } from 'react'
 
-import { authAPI } from '../Api/apiRequest'
+import { authAPI } from '@src/Api/apiRequest'
 
 const SET_USER_DATA = 'SET_USER_DATA'
 const ERROR = 'ERROR'
