@@ -1,10 +1,9 @@
+import React, { useEffect, useState } from 'react'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserProfileStatus, updateUserProfileStatus } from "../../Redux/profilePage-reducer";
-import { connect } from "react-redux";
+import { setUserProfileStatus, updateUserProfileStatus } from '../../Redux/profilePage-reducer'
+
 // class ProfileStatus extends React.Component {
 //     state = {
 //         editMode: false,
@@ -58,46 +57,45 @@ import { connect } from "react-redux";
 // }
 
 const ProfileFuncStatus = (props) => {
-    // console.log('Рэндер статус')
-    const userStatus = useSelector(state => state.profilePage.profileStatus)
-    // const userId = useSelector(state => state.auth.id)
-    const userId = useParams()
-    const [editMode, setEditMode] = useState(false)
-    const [status, setStatus] = useState(userStatus)
-    const dispatch = useDispatch()
-    const activateEditMode = () => {
-        console.log('Эдит мод')
-        if (!userId.userId) {
-            setEditMode(true)
-        }
+  // console.log('Рэндер статус')
+  const userStatus = useSelector((state) => state.profilePage.profileStatus)
+  // const userId = useSelector(state => state.auth.id)
+  const userId = useParams()
+  const [editMode, setEditMode] = useState(false)
+  const [status, setStatus] = useState(userStatus)
+  const dispatch = useDispatch()
+  const activateEditMode = () => {
+    console.log('Эдит мод')
+    if (!userId.userId) {
+      setEditMode(true)
     }
-    const deActivateEditMode = () => {
-        console.log('Эдит мод2')
-        setEditMode(false)
-        dispatch(updateUserProfileStatus(status))
-    }
-    const onStatusChange = (e) => {
-        setStatus(e.currentTarget.value)
-    }
-    // useEffect(() => { setStatus(props.status) }, [props.status])
-    return <div>
-        {!editMode &&
-            <div>
-                <span
-                    onClick={activateEditMode}
-                ><b>Статус - </b>{userStatus || 'пусто'}</span>
-            </div>
-        }
-        {
-            editMode &&
-            <div >
-                <input
-                    onChange={onStatusChange}
-                    autoFocus={true}
-                    defaultValue={userStatus}></input>
-                <button onClick={deActivateEditMode}>Сохранить</button>
-            </div>
-        }
-    </div >
+  }
+  const deActivateEditMode = () => {
+    console.log('Эдит мод2')
+    setEditMode(false)
+    dispatch(updateUserProfileStatus(status))
+  }
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value)
+  }
+  // useEffect(() => { setStatus(props.status) }, [props.status])
+  return (
+    <div>
+      {!editMode && (
+        <div>
+          <span onClick={activateEditMode}>
+            <b>Статус - </b>
+            {userStatus || 'пусто'}
+          </span>
+        </div>
+      )}
+      {editMode && (
+        <div>
+          <input onChange={onStatusChange} autoFocus={true} defaultValue={userStatus}></input>
+          <button onClick={deActivateEditMode}>Сохранить</button>
+        </div>
+      )}
+    </div>
+  )
 }
-export default ProfileFuncStatus;
+export const ProfileStatusComponent = ProfileFuncStatus

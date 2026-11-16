@@ -14,15 +14,12 @@
     flex-basis: 60px;
   }
 
-
   .btnContainer {
     flex: 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     flex-direction: column;
-
-
 
     .delBtn {
       display: flex;
@@ -66,7 +63,6 @@
     width: min-content;
     overflow-wrap: anywhere;
     hyphens: auto;
-    white-space: pre-wrap
+    white-space: pre-wrap;
   }
-
 }

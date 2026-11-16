@@ -1,17 +1,13 @@
+import { connect } from 'react-redux'
+import { DialogsComponent } from './DialogsC'
+import { compose } from 'redux'
 
-import { connect } from "react-redux";
-import Dialogs from "./DialogsC";
-import { withAuthRedirect } from "../../Hoc/withAuthRedirect";
-import { compose } from "redux";
+import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
 
 const mapStateToProps = (state) => {
-    return {
-        dialogsPage: state.dialogsPage,
-    }
+  return {
+    dialogsPage: state.dialogsPage,
+  }
 }
 
-
-export default compose(
-    connect(mapStateToProps, {}),
-    withAuthRedirect
-)(Dialogs);
+export const DialogsContainerComponent = compose(connect(mapStateToProps, {}), withAuthRedirect)(DialogsComponent)

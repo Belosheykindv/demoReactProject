@@ -8,7 +8,6 @@
   box-sizing: border-box;
 }
 
-
 .mainContainer {
   display: flex;
   /* flex: 2;  */
@@ -38,7 +37,6 @@
   text-align: center;
 }
 
-
 .liftOfSongs {
   padding-left: 10px;
 }
@@ -55,7 +53,7 @@
   cursor: pointer;
 } */
 
-input[type="range"] {
+input[type='range'] {
   height: 5px;
   /* -webkit-appearance: none; */
   width: 100%;
@@ -85,7 +83,6 @@ input[type="range"] {
 }
 
 .audio-player.playing {
-
   animation: colorChange 20s alternate infinite;
 }
 
@@ -96,7 +93,6 @@ input[type="range"] {
   height: 200px;
   width: 200px;
 }
-
 
 .track-info {
   padding: 24px;

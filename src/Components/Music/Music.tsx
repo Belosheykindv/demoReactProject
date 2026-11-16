@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
-import useSound from 'use-sound' //для работы со звуком
-import AudioControls from './AudioControls'
+import { AudioControlsComponent } from './AudioControls'
 import tracks from './Music.data'
+import useSound from 'use-sound' //для работы со звуком
+
+import { withAuthRedirect } from '../../Hoc/withAuthRedirect'
 
 import './Music.scss'
 
@@ -104,30 +105,30 @@ const Music = React.memo((props: MusicProps) => {
           background: `linear-gradient(45deg, ${color} 20%, transparent 100%)`,
         }}
       >
-        <div className="track-info">
+        <div className='track-info'>
           <img
-            id="img"
+            id='img'
             className={`artwork`}
             src={image}
             alt={`track artwork for ${title} by ${artist}`}
           />
 
-          <h2 className="title">{title}</h2>
+          <h2 className='title'>{title}</h2>
 
-          <h3 className="artist">{artist}</h3>
+          <h3 className='artist'>{artist}</h3>
 
-          {isloading && <label className="title">Loading ...</label>}
+          {isloading && <label className='title'>Loading ...</label>}
 
           {!isloading && (
             <>
-              <AudioControls
+              <AudioControlsComponent
                 isPlaying={isPlaying}
                 onPrevClick={toPrevTrack}
                 onNextClick={toNextTrack}
                 onPlayPauseClick={playingButton}
               />
 
-              <div className="times">
+              <div className='times'>
                 <p>
                   {currTime.min}:{currTime.sec}
                 </p>
@@ -137,12 +138,12 @@ const Music = React.memo((props: MusicProps) => {
               </div>
 
               <input
-                type="range"
+                type='range'
                 value={seconds || 0}
-                step="1"
-                min="0"
+                step='1'
+                min='0'
                 max={duration ? duration / 1000 : 0}
-                className="progress"
+                className='progress'
                 onChange={(e) => {
                   sound.seek([e.target.value])
                 }}
@@ -157,6 +158,6 @@ const Music = React.memo((props: MusicProps) => {
   )
 })
 
-let MusicContainer = withAuthRedirect(Music)
+const MusicContainer = withAuthRedirect(Music)
 
-export default MusicContainer
+export const MusicComponent = MusicContainer
